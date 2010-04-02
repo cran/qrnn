@@ -1,0 +1,15 @@
+Package: qrnn
+Type: Package
+Title: Quantile regression neural network
+Version: 1.0
+Date: 2010-04-02
+Author: Alex J. Cannon
+Maintainer: Alex J. Cannon <alex.cannon@ec.gc.ca>
+Description: Fit a quantile regression neural network with optional
+        left censoring using a variant of the finite smoothing
+        algorithm.
+License: GPL-2
+LazyLoad: yes
+Packaged: 2010-05-06 22:28:57 UTC; acannon
+Repository: CRAN
+Date/Publication: 2010-05-07 08:57:11
