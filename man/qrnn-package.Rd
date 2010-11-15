@@ -33,8 +33,8 @@ called directly by the user.
 \tabular{ll}{
 Package: \tab qrnn\cr
 Type: \tab Package\cr
-Version: \tab 1.0\cr
-Date: \tab 2010-04-02\cr
+Version: \tab 1.0.2\cr
+Date: \tab 2010-11-15\cr
 License: \tab GPL-2\cr
 LazyLoad: \tab yes\cr
 }

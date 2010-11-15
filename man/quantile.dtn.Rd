@@ -25,10 +25,10 @@ dquantile(x, tau, quant, lower = -Inf)
 pquantile(q, tau, quant, lower = -Inf, ...)
 qquantile(p, tau, quant, lower = -Inf,
           tol = .Machine$double.eps^0.25, maxiter = 1000,
-          range.mult = 10, max.error = 10, ...)
+          range.mult = 1.1, max.error = 100, ...)
 rquantile(n, tau, quant, lower = -Inf,
           tol = .Machine$double.eps^0.25, maxiter = 1000,
-          range.mult = 10, max.error = 10, ...)
+          range.mult = 1.1, max.error = 100, ...)
 }
 \arguments{
   \item{x, q}{

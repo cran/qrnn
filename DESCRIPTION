@@ -1,8 +1,8 @@
 Package: qrnn
 Type: Package
 Title: Quantile regression neural network
-Version: 1.0
-Date: 2010-04-02
+Version: 1.0.2
+Date: 2010-11-15
 Author: Alex J. Cannon
 Maintainer: Alex J. Cannon <alex.cannon@ec.gc.ca>
 Description: Fit a quantile regression neural network with optional
@@ -10,6 +10,6 @@ Description: Fit a quantile regression neural network with optional
         algorithm.
 License: GPL-2
 LazyLoad: yes
-Packaged: 2010-05-06 22:28:57 UTC; acannon
+Packaged: 2010-11-15 23:32:35 UTC; acannon
 Repository: CRAN
-Date/Publication: 2010-05-07 08:57:11
+Date/Publication: 2010-11-16 09:29:00

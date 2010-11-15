@@ -1,6 +1,6 @@
 rquantile <-
 function(n, tau, quant, lower = -Inf, tol = .Machine$double.eps^0.25,
-         maxiter = 1000, range.mult = 10, max.error = 10, ...)
+         maxiter = 1000, range.mult = 1.1, max.error = 100, ...)
 {
     if (length(tau) != length(quant)) 
         stop("\"tau\" and \"quant\" must be same length")
