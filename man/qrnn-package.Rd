@@ -33,8 +33,8 @@ called directly by the user.
 \tabular{ll}{
 Package: \tab qrnn\cr
 Type: \tab Package\cr
-Version: \tab 1.0.2\cr
-Date: \tab 2010-11-15\cr
+Version: \tab 1.0.3\cr
+Date: \tab 2010-11-18\cr
 License: \tab GPL-2\cr
 LazyLoad: \tab yes\cr
 }
@@ -43,6 +43,11 @@ LazyLoad: \tab yes\cr
 Alex J. Cannon <alex.cannon@ec.gc.ca>
 }
 \references{
+
+Cannon, A.J., 2010. Quantile regression neural networks: implementation
+in R and application to precipitation downscaling. Computers & Geosciences,
+doi:10.1016/j.cageo.2010.07.005
+
 Chen, C., 2007. A finite smoothing algorithm for quantile regression.
 Journal of Computational and Graphical Statistics, 16: 136-164.
 
