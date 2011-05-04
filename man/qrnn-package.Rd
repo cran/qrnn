@@ -26,21 +26,20 @@ have been fitted, \code{\link{dquantile}} and its companion functions
 are available to approximate a probability density function and related
 distribution functions.
 
-Most other functions are used internally and should not need to be
-called directly by the user.
+With the exception of \code{\link{gam.style}}, which can be used
+to investigate fitted predictor/predictand relationships, most other functions
+are used internally and should not need to be called directly by the user.
 }
 \details{
 \tabular{ll}{
 Package: \tab qrnn\cr
 Type: \tab Package\cr
-Version: \tab 1.0.3\cr
-Date: \tab 2010-11-18\cr
 License: \tab GPL-2\cr
 LazyLoad: \tab yes\cr
 }
 }
 \author{
-Alex J. Cannon <alex.cannon@ec.gc.ca>
+Alex J. Cannon <acannon@eos.ubc.ca>
 }
 \references{
 
