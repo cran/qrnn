@@ -3,9 +3,9 @@ citHeader("To cite package 'qrnn' in publications use:")
 citEntry(entry="Article",
          title        = "Quantile regression neural networks: implementation in R and application to precipitation downscaling",
          author       = "Alex J. Cannon",
-         year         = "2010",
+         year         = "2011",
          journal      = "Computers \\& Geosciences",
-         volume       = "",
-         pages        = "doi:10.1016/j.cageo.2010.07.005",
-         textVersion  = "Cannon, A.J., 2010. Quantile regression neural networks: implementation in R and application to precipitation downscaling. Computers & Geosciences, doi:10.1016/j.cageo.2010.07.005"
+         volume       = "37",
+         pages        = "1277-1284. doi:10.1016/j.cageo.2010.07.005",
+         textVersion  = "Cannon, A.J., 2011. Quantile regression neural networks: implementation in R and application to precipitation downscaling. Computers & Geosciences, 37: 1277-1284. doi:10.1016/j.cageo.2010.07.005"
 )
