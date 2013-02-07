@@ -1,4 +1,4 @@
-ff47d56bcf561f9f9ae5a6b5adc9bf86 *DESCRIPTION
+b5c126fb4108043b129510b51ef199fc *DESCRIPTION
 9fdfeb11f7ddba6f3aab9aaa6b1ac5dd *NAMESPACE
 78f5e3f950f9a04a38e3eab6f1ddc525 *R/censored.mean.R
 9092b66265f3270c2d66652d4596ef6c *R/dquantile.R
@@ -14,9 +14,9 @@ e15ed4e6951bc937aed257af54df8101 *R/pquantile.R
 596c5b872dce2ea6c19bb81bd9164bd9 *R/qrnn-rbf.R
 fd1911bbacdaf7ccb9e77d56f92770b3 *R/qrnn.cost.R
 3d34cf4911015aecefc5b38731d3c004 *R/qrnn.eval.R
-e8ac81f47178b5ff99913dc9c058ae2f *R/qrnn.fit.R
+d6ce740c50fbbd251575a9815b505745 *R/qrnn.fit.R
 6baefa18da0909e923379cd9e03cc997 *R/qrnn.initialize.R
-982e2662685cc249ed70605e564631e1 *R/qrnn.nlm.R
+6b1a548545383914169a56d318cf599f *R/qrnn.nlm.R
 107cc3d8a73027b6b2326cafe7e274d0 *R/qrnn.predict.R
 1b0d6329aa5cbb017aaaefcbd6de206e *R/qrnn.reshape.R
 bb580b494c32a21785fb376c8aff1d16 *R/rquantile.R
@@ -28,9 +28,9 @@ f1d789de977734117d76313385a1395b *R/tilted.huber.prime.R
 9e548031a8253a0a83b1646f06220646 *data/YVRprecip.rda
 7f2834d1811c377df53418df5d6f94c6 *data/sinc.rda
 192ff29c7c23b2166d007a6c3b429abf *inst/CITATION
-389ae92f2142a14837f2314ac0cee64f *man/YVRprecip.Rd
+e5b807abd838c318538fd738e97bd45d *man/YVRprecip.Rd
 2dd8a72ff4746e3abdfc383bbef9a234 *man/censored.mean.Rd
-9db292fb286e548eca33eefaf0de158a *man/gam.style.Rd
+962ce43a1bd05009ffb9550a67657d1a *man/gam.style.Rd
 ea9e6bc49adf6bb671f643ac360ea6e8 *man/hramp.Rd
 43386617e84659176b7f54997baf6e24 *man/hramp.prime.Rd
 668761446b1afa1450640c4242f5abc3 *man/huber.Rd
@@ -38,13 +38,13 @@ b52d25a4854fca54e049f1b50f46c404 *man/huber.prime.Rd
 0e1c2cfbef2a612d792dd4c92af1f310 *man/linear.Rd
 25eb5b98ae5094a1b20f0fe026b808fd *man/linear.prime.Rd
 a11bc57b39bbddca17abaa2131f27af3 *man/qrnn-package.Rd
-2567974ba3f101db08eefa695adf1330 *man/qrnn-rbf.Rd
+05e3c4a9afa7b18437edce05d5a24daf *man/qrnn-rbf.Rd
 4c10d96970417257a86f5b50e58a452d *man/qrnn.cost.Rd
 cbd3bf15a2acf788f43c173a3f4e0fb1 *man/qrnn.eval.Rd
-fde0fde88726701249f1e5ed80954718 *man/qrnn.fit.Rd
+a077b9a90e1b311c558c1cd9c1e0242f *man/qrnn.fit.Rd
 65f97010ad3339015f0abcd652eb3199 *man/qrnn.initialize.Rd
-6ec2fee631ea439e33be8491066eb126 *man/qrnn.nlm.Rd
-443124c15f4b4396ccf601d2bc429138 *man/qrnn.predict.Rd
+b7e13a3f70bf6c6cc7feabd18b570fd9 *man/qrnn.nlm.Rd
+304945dff13121ad7c37da52992b8667 *man/qrnn.predict.Rd
 695980013595591442375fe154ef34f1 *man/qrnn.reshape.Rd
 c0b20a57b67938cae02b84a719f91e46 *man/quantile.dtn.Rd
 02d4cc3edd44181ec006acebe5180417 *man/sigmoid.Rd

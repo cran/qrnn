@@ -83,9 +83,10 @@ x <- cbind(sin(2*pi*seq_along(y)/365.25),
 
 ## Fit QRNN and quantile regression models for the 95th percentile
 
-train <- c(TRUE, rep(FALSE, 9))
+set.seed(1)
+train <- c(TRUE, rep(FALSE, 29))
 w.qrnn <- qrnn.fit(x = x[train,], y = y[train,,drop=FALSE],
-                   n.hidden = 2, tau = 0.95, iter.max = 1000,
+                   n.hidden = 1, tau = 0.95, iter.max = 1000,
                    n.trials = 1, lower = 0)
 w.qreg <- qrnn.fit(x = x[train,], y = y[train,,drop=FALSE],
                    tau = 0.95, iter.max = 1000, n.trials = 1,

@@ -31,27 +31,27 @@ x <- cbind(sin(2*pi*seq_along(y)/365.25),
            cos(2*pi*seq_along(y)/365.25),
            YVRprecip$ncep)
 
-## Fit QRNN and quantile regression models for the 95th percentile
-## using the first 10 years of record for training and the remaining
-## 20 years for testing.
+## Fit QRNN and quantile regression models for the 75th percentile
+## using the final 3 years of record for training and the remaining
+## years for testing.
 
-train <- as.numeric(format(YVRprecip$date, "\%Y")) <= 1980
+train <- as.numeric(format(YVRprecip$date, "\%Y")) >= 1998
 test <- !train
 
+set.seed(1)
 w.qrnn <- qrnn.fit(x = x[train,], y = y[train,,drop=FALSE],
-                   n.hidden = 2, tau = 0.95, iter.max = 1000,
+                   n.hidden = 1, tau = 0.75, iter.max = 1000,
                    n.trials = 1, lower = 0)
 p.qrnn <- qrnn.predict(x = x[test,], parms = w.qrnn)
 w.qreg <- qrnn.fit(x = x[train,], y = y[train,,drop=FALSE],
-                   tau = 0.95, iter.max = 1000, n.trials = 1,
+                   tau = 0.75, iter.max = 1000, n.trials = 1,
                    lower = 0, Th = linear, Th.prime = linear.prime)
 p.qreg <- qrnn.predict(x = x[test,], parms = w.qreg)
 
-
 ## Tilted absolute value cost function on test dataset
 
-qvs.qrnn <- mean(tilted.abs(y[test] - p.qrnn, 0.95))
-qvs.qreg <- mean(tilted.abs(y[test] - p.qreg, 0.95))
+qvs.qrnn <- mean(tilted.abs(y[test] - p.qrnn, 0.75))
+qvs.qreg <- mean(tilted.abs(y[test] - p.qreg, 0.75))
 cat("Cost QRNN", qvs.qrnn, "\n")
 cat("Cost QREG", qvs.qreg, "\n")
 

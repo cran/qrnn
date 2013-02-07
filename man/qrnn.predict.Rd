@@ -30,8 +30,9 @@ x <- sinc$x
 y <- sinc$y
 y[y < -0.1] <- -0.1
 
+set.seed(100)
 parms <- qrnn.fit(x = x, y = y, n.hidden = 5, tau = 0.5, lower = -0.1,
-                  iter.max = 1000, n.trials = 2)
+                  iter.max = 500, n.trials = 1)
 p <- qrnn.predict(x = x, parms = parms)
 
 matplot(x, cbind(y, p), type=c("p", "l"), pch = 1, lwd = c(1, 2))

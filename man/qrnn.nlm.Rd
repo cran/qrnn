@@ -9,7 +9,8 @@ and a variant of the finite smoothing algorithm.
 }
 \usage{
 qrnn.nlm(x, y, n.hidden, tau, iter.max, n.trials, bag,
-         lower, eps.seq, Th, Th.prime, penalty, ...)
+         lower, eps.seq, Th, Th.prime, penalty, trace,
+         ...)
 }
 \arguments{
   \item{x}{
@@ -47,6 +48,9 @@ qrnn.nlm(x, y, n.hidden, tau, iter.max, n.trials, bag,
   }
   \item{penalty}{
       weight penalty for weight decay regularization.
+  }
+  \item{trace}{
+      logical variable indicating whether or not diagnostic messages are printed during optimization.
   }
   \item{\dots}{
       additional parameters passed to the \code{\link{nlm}} optimization routine.

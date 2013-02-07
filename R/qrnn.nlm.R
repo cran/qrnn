@@ -1,6 +1,6 @@
 qrnn.nlm <-
 function(x, y, n.hidden, tau, iter.max, n.trials, bag, lower, eps.seq,
-         Th, Th.prime, penalty, ...)
+         Th, Th.prime, penalty, trace, ...)
 {
     cases <- 1:nrow(x)
     if (bag) cases <- sample(nrow(x), replace=TRUE)
@@ -30,13 +30,13 @@ function(x, y, n.hidden, tau, iter.max, n.trials, bag, lower, eps.seq,
             weights <- fit$estimate
         }
         cost <- fit$minimum
-        cat(i, cost, "\n")
+        if(trace) cat(i, cost, "\n")
         if(cost < cost.best){
             cost.best <- cost
             weights.best <- fit$estimate
         }
     }
-    cat("*", cost.best, "\n")
+    if(trace) cat("*", cost.best, "\n")
     weights.best <- qrnn.reshape(x, y, weights.best, n.hidden)
     weights.best
 }

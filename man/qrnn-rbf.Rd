@@ -34,11 +34,12 @@ data(sinc)
 x <- sinc$x
 y <- sinc$y
 
+set.seed(1)
 kern <- qrnn.rbf(x, x.basis = x, sigma = 1)
 
 parms <- qrnn.fit(x = kern, y = y, tau = 0.5, penalty = 0.1,
                   Th = linear, Th.prime = linear.prime,
-                  iter.max = 1000, n.trials = 2)
+                  iter.max = 500, n.trials = 1)
 p <- qrnn.predict(x = kern, parms = parms)
 
 matplot(x, cbind(y, p), type=c("p", "l"), pch = 1, lwd = c(1, 2))

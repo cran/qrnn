@@ -54,7 +54,8 @@ units.
 qrnn.fit(x, y, n.hidden, tau = 0.5, n.ensemble = 1,
          iter.max = 5000, n.trials = 5, bag = FALSE,
          lower = -Inf, eps.seq = 2^(-8:-32), Th = sigmoid,
-         Th.prime = sigmoid.prime, penalty = 0, ...)
+         Th.prime = sigmoid.prime, penalty = 0, trace = TRUE,
+         ...)
 }
 \arguments{
   \item{x}{
@@ -96,6 +97,9 @@ qrnn.fit(x, y, n.hidden, tau = 0.5, n.ensemble = 1,
   \item{penalty}{
       weight penalty for weight decay regularization.
   }
+  \item{trace}{
+      logical variable indicating whether or not diagnostic messages are printed during optimization.
+  }
   \item{\dots}{
       additional parameters passed to the \code{\link{nlm}} optimization routine.
   }
@@ -124,10 +128,11 @@ probs <- c(0.05, 0.50, 0.95)
  
 ## Fit QRNN models for 5th, 50th, and 95th percentiles
 
+set.seed(1)
 w <- p <- list()
 for(i in seq_along(probs)){
-    w[[i]] <- qrnn.fit(x = x, y = y, n.hidden = 5, tau = probs[i],
-                       iter.max = 1000, n.trials = 2)
+    w[[i]] <- qrnn.fit(x = x, y = y, n.hidden = 4, tau = probs[i],
+                       iter.max = 1000, n.trials = 1)
     p[[i]] <- qrnn.predict(x, w[[i]])
 }
 
