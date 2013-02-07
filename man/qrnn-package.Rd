@@ -2,7 +2,7 @@
 \alias{qrnn-package}
 \alias{qrnn}
 \docType{package}
-\title{Quantile regression neural network}
+\title{Quantile Regression Neural Network}
 \description{
 This package implements the quantile regression neural network (QRNN)
 (Taylor, 2000), which is the artificial neural network  analog of

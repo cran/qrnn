@@ -1,5 +1,5 @@
-b5c126fb4108043b129510b51ef199fc *DESCRIPTION
-9fdfeb11f7ddba6f3aab9aaa6b1ac5dd *NAMESPACE
+e5f8acf7ee9cc8e53473d3618eeec313 *DESCRIPTION
+85d503e4a945c28aa0dc9d274718a8e5 *NAMESPACE
 78f5e3f950f9a04a38e3eab6f1ddc525 *R/censored.mean.R
 9092b66265f3270c2d66652d4596ef6c *R/dquantile.R
 f3c7b98d65bceb46745a1c05025f7a2f *R/gam.style.R
@@ -37,7 +37,7 @@ ea9e6bc49adf6bb671f643ac360ea6e8 *man/hramp.Rd
 b52d25a4854fca54e049f1b50f46c404 *man/huber.prime.Rd
 0e1c2cfbef2a612d792dd4c92af1f310 *man/linear.Rd
 25eb5b98ae5094a1b20f0fe026b808fd *man/linear.prime.Rd
-a11bc57b39bbddca17abaa2131f27af3 *man/qrnn-package.Rd
+0d80d28a25b1ebb5e5456a8753badbc6 *man/qrnn-package.Rd
 05e3c4a9afa7b18437edce05d5a24daf *man/qrnn-rbf.Rd
 4c10d96970417257a86f5b50e58a452d *man/qrnn.cost.Rd
 cbd3bf15a2acf788f43c173a3f4e0fb1 *man/qrnn.eval.Rd
