@@ -25,15 +25,24 @@ qrnn.predict(x, parms)
     \code{\link{qrnn.fit}}
 }
 \examples{
-data(sinc)
-x <- sinc$x
-y <- sinc$y
-y[y < -0.1] <- -0.1
+x <- as.matrix(iris[,"Petal.Length",drop=FALSE])
+y <- as.matrix(iris[,"Petal.Width",drop=FALSE])
 
-set.seed(100)
-parms <- qrnn.fit(x = x, y = y, n.hidden = 5, tau = 0.5, lower = -0.1,
-                  iter.max = 500, n.trials = 1)
-p <- qrnn.predict(x = x, parms = parms)
+cases <- order(x)
+x <- x[cases,,drop=FALSE]
+y <- y[cases,,drop=FALSE]
+y[y < 0.5] <- 0.5
 
-matplot(x, cbind(y, p), type=c("p", "l"), pch = 1, lwd = c(1, 2))
+set.seed(1)
+parms <- qrnn.fit(x=x, y=y, n.hidden=3, tau=0.5, lower=0.5,
+                  iter.max=500, n.trials=1)
+p <- qrnn.predict(x=x, parms=parms)
+
+matplot(x, cbind(y, p), type=c("p", "l"), pch=1, lwd=1)
 }
+\references{
+Cannon, A.J., 2011. Quantile regression neural networks: implementation
+in R and application to precipitation downscaling. Computers & Geosciences,
+37: 1277-1284. doi:10.1016/j.cageo.2010.07.005
+}
+

@@ -1,12 +1,12 @@
 \name{gam.style}
 \alias{gam.style}
 \title{
-GAM-style effects plots for interpreting qrnn models
+Modified generalized additive model plots for interpreting QRNN models
 }
 \description{
-GAM-style effects plots provide a graphical means of interpreting
-relationships between predictors and conditional quantiles
-predicted by a qrnn. From Plate et al. (2000): The effect of the
+Generalized additive model (GAM)-style effects plots provide a graphical
+means of interpreting relationships between covariates and conditional
+quantiles predicted by a QRNN. From Plate et al. (2000): The effect of the
 \code{i}th input variable at a particular input point \code{Delta.i.x}
 is the change in \code{f} resulting from changing \code{X1} to \code{x1}
 from \code{b1} (the baseline value [...]) while keeping the other
@@ -22,14 +22,14 @@ a variable depends on the values of other variables.
 }
 
 \usage{
-gam.style(x, parms, column, baseline = mean(x[,column]),
-         epsilon = 1e-5, seg.len = 0.02, seg.cols = "black",
-         plot = TRUE, return.results = FALSE, trim = 0,
+gam.style(x, parms, column, baseline=mean(x[,column]),
+         epsilon=1e-5, seg.len=0.02, seg.cols="black",
+         plot=TRUE, return.results=FALSE, trim=0,
          ...)
 }
 \arguments{
   \item{x}{
-      matrix with number of rows equal to the number of samples and number of columns equal to the number of predictor variables.
+      matrix with number of rows equal to the number of samples and number of columns equal to the number of covariate variables.
 }
   \item{parms}{
       list returned by \code{\link{qrnn.fit}}.
@@ -38,7 +38,7 @@ gam.style(x, parms, column, baseline = mean(x[,column]),
       column of \code{x} for which effects plots should be returned.
 }
   \item{baseline}{
-      value of \code{x[,column]} to be used as the baseline for calculation of predictor effects; defaults to \code{mean(x[,column])}.
+      value of \code{x[,column]} to be used as the baseline for calculation of covariate effects; defaults to \code{mean(x[,column])}.
 }
   \item{epsilon}{
       step-size used in the finite difference calculation of the partial derivatives.
@@ -67,13 +67,12 @@ gam.style(x, parms, column, baseline = mean(x[,column]),
 }
 \value{
 A list with elements:
-  \item{effects}{a matrix of predictor effects.}
-  \item{partials}{a matrix of predictor partial derivatives.}
+  \item{effects}{a matrix of covariate effects.}
+  \item{partials}{a matrix of covariate partial derivatives.}
 }
 \examples{
 ## YVR precipitation data with seasonal cycle and NCEP/NCAR Reanalysis
 ## covariates
-
 data(YVRprecip)
 
 y <- YVRprecip$precip
@@ -81,24 +80,28 @@ x <- cbind(sin(2*pi*seq_along(y)/365.25),
            cos(2*pi*seq_along(y)/365.25),
            YVRprecip$ncep)
 
-## Fit QRNN and quantile regression models for the 95th percentile
-
+## Fit QRNN, additive QRNN (QADD), and quantile regression (QREG) models for
+## the conditional 95th percentile
 set.seed(1)
 train <- c(TRUE, rep(FALSE, 29))
-w.qrnn <- qrnn.fit(x = x[train,], y = y[train,,drop=FALSE],
-                   n.hidden = 1, tau = 0.95, iter.max = 1000,
-                   n.trials = 1, lower = 0)
-w.qreg <- qrnn.fit(x = x[train,], y = y[train,,drop=FALSE],
-                   tau = 0.95, iter.max = 1000, n.trials = 1,
-                   lower = 0, Th = linear, Th.prime = linear.prime)
+w.qrnn <- qrnn.fit(x=x[train,], y=y[train,,drop=FALSE],
+                   n.hidden=2, tau=0.95, iter.max=500,
+                   n.trials=1, lower=0)
+w.qadd <- qrnn.fit(x=x[train,], y=y[train,,drop=FALSE],
+                   n.hidden=ncol(x), tau=0.95, iter.max=250,
+                   n.trials=1, lower=0, additive=TRUE)
+w.qreg <- qrnn.fit(x=x[train,], y=y[train,,drop=FALSE],
+                   tau=0.95, iter.max=100, n.trials=1,
+                   lower=0, Th=linear, Th.prime=linear.prime)
 
 ## GAM-style plots for slp, sh700, and z500
-
 for (column in 3:5) {
-    gam.style(x[train,], parms = w.qrnn, column = column,
-              main = "QRNN")
-    gam.style(x[train,], parms = w.qreg, column = column,
-              main = "QREG")
+    gam.style(x[train,], parms=w.qrnn, column=column,
+              main="QRNN")
+    gam.style(x[train,], parms=w.qadd, column=column,
+              main="QADD")
+    gam.style(x[train,], parms=w.qreg, column=column,
+              main="QREG")
 }
 }
 \references{

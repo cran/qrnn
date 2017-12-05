@@ -1,7 +1,7 @@
 \name{linear.prime}
 \alias{linear.prime}
 \title{
-Derivitative of the linear function
+Derivative of the linear function
 }
 \description{
 Derivative of the linear function.
@@ -18,6 +18,6 @@ linear.prime(x)
 \code{\link{linear}}, \code{\link{sigmoid}}
 }
 \examples{
-x <- seq(-10, 10, length = 100)
+x <- seq(-10, 10, length=100)
 plot(x, linear.prime(x))
 }

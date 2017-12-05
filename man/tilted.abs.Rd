@@ -17,9 +17,8 @@ tilted.abs(x, tau)
       desired tau-quantile.
   }
 }
-\seealso{
-\code{\link{huber}}, \code{\link{tilted.huber}}}
+\seealso{\code{\link{tilted.approx}}}
 \examples{
-x <- seq(-10, 10, length = 100)
-plot(x, tilted.abs(x, tau = 0.75))
+x <- seq(-2, 2, length=200)
+plot(x, tilted.abs(x, tau=0.75))
 }

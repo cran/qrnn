@@ -18,6 +18,6 @@ linear(x)
 \code{\link{linear.prime}}, \code{\link{sigmoid}}
 }
 \examples{
-x <- seq(-10, 10, length = 100)
+x <- seq(-10, 10, length=100)
 plot(x, linear(x))
 }

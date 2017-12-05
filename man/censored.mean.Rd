@@ -7,7 +7,7 @@ A hybrid mean/median function for left censored variables
 Returns the median if the majority of values are censored and the mean otherwise.
 }
 \usage{
-censored.mean(x, lower, trim = 0)
+censored.mean(x, lower, trim=0)
 }
 \arguments{
   \item{x}{
@@ -24,7 +24,7 @@ censored.mean(x, lower, trim = 0)
 \code{\link{qrnn.fit}}, \code{\link{qrnn.predict}}}
 \examples{
 x <- c(0, 0, 1, 2, 3)
-print(censored.mean(x, lower = 0))
+print(censored.mean(x, lower=0))
 x.cens <- c(0, 0, 0, 1, 2)
-print(censored.mean(x.cens, lower = 0))
+print(censored.mean(x.cens, lower=0))
 }

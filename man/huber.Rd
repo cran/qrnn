@@ -21,6 +21,6 @@ huber(x, eps)
 \code{\link{huber.prime}}
 }
 \examples{
-x <- seq(-10, 10, length = 100)
-plot(x, huber(x, eps = 1))
+x <- seq(-10, 10, length=100)
+plot(x, huber(x, eps=1))
 }

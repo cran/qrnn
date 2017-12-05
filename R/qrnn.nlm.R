@@ -1,32 +1,38 @@
 qrnn.nlm <-
-function(x, y, n.hidden, tau, iter.max, n.trials, bag, lower, eps.seq,
-         Th, Th.prime, penalty, trace, ...)
+function(x, y, n.hidden, w, tau, iter.max, n.trials, bag, lower, init.range,
+         monotone, additive, eps.seq, Th, Th.prime, penalty, unpenalized,
+         trace, ...)
 {
-    cases <- 1:nrow(x)
+    cases <- seq(nrow(x))
     if (bag) cases <- sample(nrow(x), replace=TRUE)
     x <- x[cases,,drop=FALSE]
     y <- y[cases,,drop=FALSE]
+    w <- w[cases]
+    if(length(tau) > 1) tau <- tau[cases]
     if(length(lower) > 1) lower <- lower[cases]
 	eps.seq <- sort(eps.seq, decreasing=TRUE)
     cost.best <- Inf
-    for(i in 1:n.trials){
-        weights <- qrnn.initialize(x, y, n.hidden)
+    for(i in seq(n.trials)){
+        weights <- qrnn.initialize(x, y, n.hidden, init.range)
         if(any(lower != -Inf)){
             for(eps in eps.seq){
-                fit <- nlm(qrnn.cost, weights, iterlim=iter.max,
-                           x=x, y=y, n.hidden=n.hidden, tau=tau,
-                           lower=-Inf, eps=eps, Th=Th,
+                fit <- suppressWarnings(nlm(qrnn.cost, weights,
+                           iterlim=iter.max, x=x, y=y, n.hidden=n.hidden,
+                           w=w, tau=tau, lower=-Inf, monotone=monotone,
+                           additive=additive, eps=eps, Th=Th,
                            Th.prime=Th.prime, penalty=penalty,
-                           check.analyticals=FALSE, ...)
+                           unpenalized=unpenalized,
+                           check.analyticals=FALSE, ...))
                 weights <- fit$estimate
             }
         } 
         for(eps in eps.seq){
-            fit <- nlm(qrnn.cost, weights, iterlim=iter.max,
-                       x=x, y=y, n.hidden=n.hidden, tau=tau,
-                       lower=lower, eps=eps, Th=Th,
+            fit <- suppressWarnings(nlm(qrnn.cost, weights, iterlim=iter.max,
+                       x=x, y=y, n.hidden=n.hidden, w=w, tau=tau, lower=lower,
+                       monotone=monotone, additive=additive, eps=eps, Th=Th,
                        Th.prime=Th.prime, penalty=penalty,
-                       check.analyticals=FALSE, ...)
+                       unpenalized=unpenalized,
+                       check.analyticals=FALSE, ...))
             weights <- fit$estimate
         }
         cost <- fit$minimum
@@ -38,6 +44,8 @@ function(x, y, n.hidden, tau, iter.max, n.trials, bag, lower, eps.seq,
     }
     if(trace) cat("*", cost.best, "\n")
     weights.best <- qrnn.reshape(x, y, weights.best, n.hidden)
+    if(!is.logical(additive)){
+        weights.best$W1 <- weights.best$W1*additive
+    }
     weights.best
 }
-

@@ -1,15 +1,16 @@
 \name{qrnn.cost}
 \alias{qrnn.cost}
 \title{
-Huber norm approximation to the tilted absolute value cost function
+Smooth approximation to the tilted absolute value cost function
 }
 \description{
-Huber norm approximation to the tilted absolute value cost function
-used to fit a QRNN model. Optional left censoring is supported.
+Smooth approximation to the tilted absolute value cost function
+used to fit a QRNN model. Optional left censoring, monotone constraints,
+and additive constraints are supported.
 }
 \usage{
-qrnn.cost(weights, x, y, n.hidden, tau, lower, eps, Th,
-          Th.prime, penalty)
+qrnn.cost(weights, x, y, n.hidden, w, tau, lower, monotone, additive,
+          eps, Th, Th.prime, penalty, unpenalized)
 }
 \arguments{
   \item{weights}{
@@ -19,10 +20,14 @@ qrnn.cost(weights, x, y, n.hidden, tau, lower, eps, Th,
       covariate matrix with number of rows equal to the number of samples and number of columns equal to the number of variables.
   }
   \item{y}{
-      predictand column matrix with number of rows equal to the number of samples.
+      response column matrix with number of rows equal to the number of samples.
   }
   \item{n.hidden}{
       number of hidden nodes in the QRNN model.
+  }
+  \item{w}{
+      vector of weights with length equal to the number of samples;
+      \code{NULL} gives equal weight to each sample.
   }
   \item{tau}{
       desired tau-quantile.
@@ -30,11 +35,17 @@ qrnn.cost(weights, x, y, n.hidden, tau, lower, eps, Th,
   \item{lower}{
       left censoring point.
   }
+  \item{monotone}{
+      column indices of covariates for which the monotonicity constraint should hold.
+  }
+  \item{additive}{
+      force additive relationships.
+  }
   \item{eps}{
-      epsilon value used in \code{\link{huber}} and related functions.
+      epsilon value used in the approximation functions.
   }
   \item{Th}{
-      hidden layer transfer function; use \code{\link{sigmoid}} for a nonlinear model and \code{\link{linear}} for a linear model.
+      hidden layer transfer function; use \code{\link{sigmoid}},  \code{\link{elu}}, \code{\link{softplus}} for a nonlinear model and \code{\link{linear}} for a linear model.
   }
   \item{Th.prime}{
       derivative of the hidden layer transfer function \code{Th}.
@@ -42,10 +53,23 @@ qrnn.cost(weights, x, y, n.hidden, tau, lower, eps, Th,
   \item{penalty}{
       weight penalty for weight decay regularization.
   }
+  \item{unpenalized}{
+      column indices of covariates for which the weight penalty should not be applied to input-hidden layer weights.
+  }
 }
 \value{
     numeric value indicating tilted absolute value cost function, along with attribute containing vector with gradient information.
 }
 \seealso{
-    \code{\link{qrnn.nlm}}, \code{\link{qrnn.fit}}
+    \code{\link{qrnn.fit}}
 }
+\references{
+Cannon, A.J., 2011. Quantile regression neural networks: implementation
+in R and application to precipitation downscaling. Computers & Geosciences,
+37: 1277-1284. doi:10.1016/j.cageo.2010.07.005
+
+Cannon, A.J., 2017. Non-crossing nonlinear regression quantiles by monotone
+composite quantile regression neural network, with application to rainfall
+extremes. EarthArXiv <https://eartharxiv.org/wg7sn>. doi:10.17605/OSF.IO/WG7SN
+}
+

@@ -4,6 +4,8 @@ function(x, parms)
     if (!is.matrix(x)) stop("\"x\" must be a matrix")
     weights <- parms$weights
     lower <- parms$lower
+    monotone <- parms$monotone
+    additive <- parms$additive
     eps <- min(parms$eps.seq)
     Th <- parms$Th
     x.center <- parms$x.center
@@ -16,7 +18,7 @@ function(x, parms)
     y.bag <- matrix(0, ncol=length(weights), nrow=nrow(x))
     for (i in seq_along(weights)){
         y.bag[,i] <- qrnn.eval(x, weights[[i]]$W1, weights[[i]]$W2,
-                               lower, eps, Th)
+                               lower, monotone, additive, eps, Th)
         y.bag[,i] <- y.bag[,i]*y.scale + y.center
     }
     y.bag

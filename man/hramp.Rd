@@ -1,10 +1,10 @@
 \name{hramp}
 \alias{hramp}
 \title{
-Huber norm approximation to the ramp function
+Approximation to the ramp function
 }
 \description{
-Huber norm approximation to the ramp function.
+Approximation to the ramp function.
 }
 \usage{
 hramp(x, lower, eps)
@@ -17,13 +17,13 @@ hramp(x, lower, eps)
       left censoring point.
   }
   \item{eps}{
-      epsilon value used in \code{\link{huber}} and related functions.
+      epsilon value used in the approximation.
   }  
 }
 \seealso{
 \code{\link{hramp.prime}}, \code{\link{huber}}
 }
 \examples{
-x <- seq(-10, 10, length = 100)
-plot(x, hramp(x, lower = 0, eps = 1))
+x <- seq(-2, 2, length=200)
+plot(x, hramp(x, lower=0, eps=1))
 }
