@@ -80,8 +80,8 @@ x <- cbind(sin(2*pi*seq_along(y)/365.25),
            cos(2*pi*seq_along(y)/365.25),
            YVRprecip$ncep)
 
-## Fit QRNN, additive QRNN (QADD), and quantile regression (QREG) models for
-## the conditional 95th percentile
+## Fit QRNN, additive QRNN (QADD), and quantile regression (QREG)
+## models for the conditional 95th percentile
 set.seed(1)
 train <- c(TRUE, rep(FALSE, 29))
 w.qrnn <- qrnn.fit(x=x[train,], y=y[train,,drop=FALSE],

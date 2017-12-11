@@ -1,5 +1,5 @@
-f5e25f571eb6b0283d0736a0091337ad *DESCRIPTION
-1f0acb4e7505089cb1b3f906cdbbb27f *NAMESPACE
+6760aaac6b4d4d56388d29ee01662bb1 *DESCRIPTION
+72e4ae0399b9b854426773347f2deda5 *NAMESPACE
 5b556573ed5cac147cf00319800ec152 *R/censored.mean.R
 d9a671906fc8673cae7afbf94fa2e371 *R/composite.stack.R
 eb097d5ff8ad5de180a238429986be46 *R/dquantile.R
@@ -24,6 +24,7 @@ bd6fcf639ab9c56493b7e2b07218ed58 *R/qrnn.fit.R
 8fe1dcabe0d309c1f387469daa433e34 *R/qrnn.nlm.R
 678fce2a2b5a2dbb6e8106cb80c1386a *R/qrnn.predict.R
 99e4551c6c757eefe136270cde2045e6 *R/qrnn.reshape.R
+403d084a8a10bf417bfb274029bac439 *R/qrnn2.R
 fb21976f57f60453fef52cd6afcf84aa *R/rquantile.R
 92e1489afbed7d6aee706826e4581ad5 *R/sigmoid.R
 e135751db8949e00b4cf6dafd14efebb *R/sigmoid.prime.R
@@ -40,7 +41,7 @@ f354e64966e7c02998460f06af0713b5 *man/censored.mean.Rd
 75d597ecb27f7091f98cdaca54424edb *man/dummy.code.Rd
 d8ff83f7bef9299308564ebcd2376846 *man/elu.Rd
 9ba1a3dbe0475b427f895160187be828 *man/elu.prime.Rd
-f34fafb232507c7df4d09eff03fc3a27 *man/gam.style.Rd
+5cc7b9c6780be3c017db05207d52bad3 *man/gam.style.Rd
 eef19caabd854ca784db9f93faf6ba65 *man/hramp.Rd
 75dacae9259fb896a06305c634ed167e *man/hramp.prime.Rd
 17662b73062a634e684a540efeda9b8b *man/huber.Rd
@@ -48,12 +49,13 @@ da7bd850290b536163303f7e01ddad8d *man/huber.prime.Rd
 0566f88f24f9b1457c428fe3817e4d3f *man/linear.Rd
 0b396f3ac297da350003319d567cfe45 *man/linear.prime.Rd
 384452d48f08b5772cc0ff60ffed1c2f *man/mcqrnn.Rd
-13bc13381b2768a131f4114c312b4461 *man/qrnn-package.Rd
+3bf0b7ed2e227860dd88457ff8a48e0c *man/qrnn-package.Rd
 9d94652d4f24fd253bd8b5bd1b7f0f99 *man/qrnn-rbf.Rd
-34bc6e298f7a4e0b2b6675a6a776914d *man/qrnn.cost.Rd
+b4421b27a400f2422283ba7985278535 *man/qrnn.cost.Rd
 d50bd9a6b82e36897ae9b50cb2c17556 *man/qrnn.fit.Rd
 fc37ddaad90ffeed7660653a7427ae5b *man/qrnn.initialize.Rd
 00fd2bd8041e3cee74a3314833d13c11 *man/qrnn.predict.Rd
+da4e428f1ed78afdf4905dfa197c0d06 *man/qrnn2.Rd
 11f5607aa0057867ddfc46730ab05643 *man/quantile.dtn.Rd
 4ec56e57213cfe876251f9f72473bec2 *man/sigmoid.Rd
 245967824f08be74345a915314df153b *man/sigmoid.prime.Rd

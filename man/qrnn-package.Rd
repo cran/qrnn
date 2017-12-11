@@ -29,13 +29,20 @@ combination with the composite model allows one to simultaneously estimate
 multiple non-crossing quantiles (Cannon, 2017); the resulting monotone composite
 QRNN (MCQRNN) is demonstrated in \code{\link{mcqrnn}}.
 
-QRNN models are fit using the \code{\link{qrnn.fit}} function.
-Predictions from a fitted model are made using the \code{\link{qrnn.predict}}
-function. If models for multiple quantiles have been fitted, the (experimental)
-\code{\link{dquantile}} function and its companion functions are available to
-approximate a probability density function and related distribution functions.
-The function \code{\link{gam.style}} can be used to visualize and investigate
-fitted covariate/response relationships (Plate et al., 2000).
+QRNN models with a single layer of hidden nodes are trained using the
+\code{\link{qrnn.fit}} function. Predictions from a fitted model are made using
+the \code{\link{qrnn.predict}} function. Note: a single hidden layer
+is usually sufficient for most modelling tasks. With added monotonicity
+constraints, a second hidden layer may sometimes be beneficial
+(Lang, 2005; Minin et al., 2010). QRNN models with two hidden layers are
+available using the \code{\link{qrnn2.fit}} and
+\code{\link{qrnn2.predict}} functions. If models for multiple quantiles
+have been fitted, the  (experimental) \code{\link{dquantile}} function and
+its companion functions are available to approximate a probability density
+function and related distribution functions. The function \code{\link{gam.style}}
+can be used to visualize and investigate fitted covariate/response relationships
+(Plate et al., 2000).
+
 }
 \details{
 \tabular{ll}{
@@ -60,6 +67,15 @@ Journal of Computational and Graphical Statistics, 16: 136-164.
 Friederichs, P. and A. Hense, 2007. Statistical downscaling of extreme
 precipitation events using censored quantile regression. Monthly Weather
 Review, 135: 2365-2378. 
+
+Lang, B., 2005. Monotonic multi-layer perceptron networks as universal
+approximators. International Conference on Artificial Neural Networks,
+Artificial Neural Networks: Formal Models and Their Applications-ICANN 2005,
+pp. 31-37.
+
+Minin, A., M. Velikova, B. Lang, and H. Daniels, 2010. Comparison of universal
+approximators incorporating partial monotonicity by structure.
+Neural Networks, 23(4): 471-475.
 
 Plate, T., J. Bert, J. Grace, and P. Band, 2000. Visualizing the function
 computed by a feedforward neural network. Neural Computation,

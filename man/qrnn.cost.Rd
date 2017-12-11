@@ -9,8 +9,8 @@ used to fit a QRNN model. Optional left censoring, monotone constraints,
 and additive constraints are supported.
 }
 \usage{
-qrnn.cost(weights, x, y, n.hidden, w, tau, lower, monotone, additive,
-          eps, Th, Th.prime, penalty, unpenalized)
+qrnn.cost(weights, x, y, n.hidden, w, tau, lower, monotone,
+          additive, eps, Th, Th.prime, penalty, unpenalized)
 }
 \arguments{
   \item{weights}{
