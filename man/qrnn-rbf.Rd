@@ -47,9 +47,3 @@ p <- qrnn.predict(x=kern, parms=parms)
 
 matplot(x, cbind(y, p), type=c("p", "l"), pch=1, lwd=1)
 }
-\references{
-Cannon, A.J., 2011. Quantile regression neural networks: implementation
-in R and application to precipitation downscaling. Computers & Geosciences,
-37: 1277-1284. doi:10.1016/j.cageo.2010.07.005
-}
-

@@ -23,9 +23,4 @@ qrnn.initialize(x, y, n.hidden, init.range=c(-0.5, 0.5, -0.5, 0.5))
       initial weight range for input-hidden and hidden-output weight matrices.
   }
 }
-\references{
-Cannon, A.J., 2011. Quantile regression neural networks: implementation
-in R and application to precipitation downscaling. Computers & Geosciences,
-37: 1277-1284. doi:10.1016/j.cageo.2010.07.005
 
-}

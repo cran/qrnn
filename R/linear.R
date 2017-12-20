@@ -1,6 +1,0 @@
-linear <-
-function(x)
-{
-    x
-}
-

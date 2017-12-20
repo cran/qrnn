@@ -6,6 +6,7 @@ Fit and make predictions from QRNN models with two hidden layers
 }
 \description{
 Functions used to fit and make predictions from QRNN models with two hidden layers.
+Note: \code{Th} must be a non-decreasing function if \code{monotone != NULL}.
 }
 \usage{
 qrnn2.fit(x, y, n.hidden=2, n.hidden2=2, w=NULL, tau=0.5,

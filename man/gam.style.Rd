@@ -81,17 +81,17 @@ x <- cbind(sin(2*pi*seq_along(y)/365.25),
            YVRprecip$ncep)
 
 ## Fit QRNN, additive QRNN (QADD), and quantile regression (QREG)
-## models for the conditional 95th percentile
+## models for the conditional 75th percentile
 set.seed(1)
-train <- c(TRUE, rep(FALSE, 29))
+train <- c(TRUE, rep(FALSE, 49))
 w.qrnn <- qrnn.fit(x=x[train,], y=y[train,,drop=FALSE],
-                   n.hidden=2, tau=0.95, iter.max=500,
-                   n.trials=1, lower=0)
+                   n.hidden=2, tau=0.75, iter.max=500,
+                   n.trials=1, lower=0, penalty=0.01)
 w.qadd <- qrnn.fit(x=x[train,], y=y[train,,drop=FALSE],
-                   n.hidden=ncol(x), tau=0.95, iter.max=250,
+                   n.hidden=ncol(x), tau=0.75, iter.max=250,
                    n.trials=1, lower=0, additive=TRUE)
 w.qreg <- qrnn.fit(x=x[train,], y=y[train,,drop=FALSE],
-                   tau=0.95, iter.max=100, n.trials=1,
+                   tau=0.75, iter.max=100, n.trials=1,
                    lower=0, Th=linear, Th.prime=linear.prime)
 
 ## GAM-style plots for slp, sh700, and z500

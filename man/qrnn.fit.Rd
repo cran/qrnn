@@ -32,14 +32,14 @@ The hidden layer transfer function \code{Th} and its derivative
 for a nonlinear model and to \code{\link{linear}} and
 \code{\link{linear.prime}} for a linear model.
 
-If invoked, the \code{monotone} argument enforces increasing behaviour
+If invoked, the \code{monotone} argument enforces non-decreasing behaviour
 between specified columns of \code{x} and model outputs. This holds if
-\code{Th} and \code{To} are monotone increasing functions. In this case,
+\code{Th} and \code{To} are monotone non-decreasing functions. In this case,
 the \code{exp} function is applied to the relevant weights following
 initialization and during optimization; manual adjustment of
 \code{init.weights} or \code{qrnn.initialize} may be needed due to
 differences in scaling of the constrained and unconstrained weights.
-Decreasing behaviour can be forced by transforming the relevant
+Non-increasing behaviour can be forced by transforming the relevant
 covariates, e.g., by reversing sign.
 
 The \code{additive} argument sets relevant input-hidden layer weights
@@ -78,9 +78,9 @@ the modelled covariate-response relationships.
 Note: values of \code{x} and \code{y} need not be standardized or
 rescaled by the user. All variables are automatically scaled to zero
 mean and unit standard deviation prior to fitting and parameters are
-automatically rescaled by \code{\link{qrnn.predict}}. Values of
-\code{eps.seq} are relative to the residuals in standard deviation
-units.
+automatically rescaled by \code{\link{qrnn.predict}} and other prediction
+functions. Values of \code{eps.seq} are relative to the residuals in
+standard deviation units.
 }
 \usage{
 qrnn.fit(x, y, n.hidden, w=NULL, tau=0.5, n.ensemble=1,

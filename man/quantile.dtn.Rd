@@ -3,7 +3,7 @@
 \alias{pquantile}
 \alias{qquantile}
 \alias{rquantile}
-
+\encoding{UTF-8}
 \title{
 Interpolated quantile distribution with exponential tails
 }
@@ -11,9 +11,9 @@ Interpolated quantile distribution with exponential tails
 \code{dquantile} gives a probability density function (pdf) by combining
 step-interpolation of probability densities for specified
 \code{tau}-quantiles (\code{quant}) with exponential lower/upper tails
-(Quinonero-Candela, 2006). Point mass (e.g., as might occur when using
-censored QRNN models) can be defined by setting \code{lower} to the left
-censoring point. \code{pquantile} gives the cumulative distribution
+(Quiñonero-Candela, 2006; Cannon, 2011). Point mass (e.g., as might occur
+when using censored QRNN models) can be defined by setting \code{lower} to
+the left censoring point. \code{pquantile} gives the cumulative distribution
 function (cdf); the \code{\link{integrate}} function is used for values
 outside the range of \code{quant}. The inverse cdf is given by
 \code{qquantile}; the \code{\link{uniroot}} function is used for values
@@ -75,7 +75,11 @@ rquantile(n, tau, quant, lower=-Inf,
 \code{rquantile} generates random deviates.
 }
 \references{
-Quinonero-Candela, J., C. Rasmussen, F. Sinz, O. Bousquet,
+Cannon, A.J., 2011. Quantile regression neural networks: implementation
+in R and application to precipitation downscaling. Computers & Geosciences,
+37: 1277-1284. doi:10.1016/j.cageo.2010.07.005
+
+Quiñonero-Candela, J., C. Rasmussen, F. Sinz, O. Bousquet,
 B. Scholkopf, 2006. Evaluating Predictive Uncertainty Challenge.
 Lecture Notes in Artificial Intelligence, 3944: 1-27.
 }

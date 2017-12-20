@@ -20,5 +20,5 @@ tilted.abs(x, tau)
 \seealso{\code{\link{tilted.approx}}}
 \examples{
 x <- seq(-2, 2, length=200)
-plot(x, tilted.abs(x, tau=0.75))
+plot(x, tilted.abs(x, tau=0.75), type="l")
 }

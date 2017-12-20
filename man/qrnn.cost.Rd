@@ -63,13 +63,4 @@ qrnn.cost(weights, x, y, n.hidden, w, tau, lower, monotone,
 \seealso{
     \code{\link{qrnn.fit}}
 }
-\references{
-Cannon, A.J., 2011. Quantile regression neural networks: implementation
-in R and application to precipitation downscaling. Computers & Geosciences,
-37: 1277-1284. doi:10.1016/j.cageo.2010.07.005
-
-Cannon, A.J., 2017. Non-crossing nonlinear regression quantiles by monotone
-composite quantile regression neural network, with application to rainfall
-extremes. EarthArXiv <https://eartharxiv.org/wg7sn>. doi:10.17605/OSF.IO/WG7SN
-}
 
