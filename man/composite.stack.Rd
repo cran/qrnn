@@ -10,7 +10,7 @@ regression and composite QRNN models (Zou et al., 2008;
 Xu et al., 2017). In combination with the partial monotonicity
 constraints, stacking can be used to fit multiple non-crossing
 quantile functions (see \code{\link{mcqrnn}}). More details
-are provided in Cannon (2017).
+are provided in Cannon (2018).
 }
 \usage{
 composite.stack(x, y, tau)
@@ -67,9 +67,10 @@ points(x, y, pch=20)
 }
 
 \references{
-Cannon, A.J., 2017. Non-crossing nonlinear regression quantiles by monotone
+Cannon, A.J., 2018. Non-crossing nonlinear regression quantiles by monotone
 composite quantile regression neural network, with application to rainfall
-extremes. EarthArXiv <https://eartharxiv.org/wg7sn>. doi:10.17605/OSF.IO/WG7SN
+extremes. Stochastic Environmental Research and Risk Assessment
+<https://dx.doi.org/10.1007/s00477-018-1573-6>. doi:10.1007/s00477-018-1573-6
 
 Xu, Q., K. Deng, C. Jiang, F. Sun, and X. Huang, 2017. Composite quantile 
 regression neural network with applications. Expert Systems with Applications,

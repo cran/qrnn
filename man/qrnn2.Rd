@@ -14,7 +14,8 @@ qrnn2.fit(x, y, n.hidden=2, n.hidden2=2, w=NULL, tau=0.5,
           lower=-Inf, init.range=c(-0.5, 0.5, -0.5, 0.5, -0.5, 0.5),
           monotone=NULL, eps.seq=2^(-8:-32), Th=sigmoid,
           Th.prime=sigmoid.prime, penalty=0, unpenalized=NULL,
-          n.errors.max=10, trace=TRUE, ...)
+          n.errors.max=10, trace=TRUE, method=c("nlm", "adam"),
+          ...)
 qrnn2.predict(x, parms)
 }
 \arguments{
@@ -79,15 +80,20 @@ qrnn2.predict(x, parms)
   \item{trace}{
       logical variable indicating whether or not diagnostic messages are printed during optimization.
   }
+  \item{method}{
+      character string indicating which optimization algorithm to use.
+  }
   \item{\dots}{
-      additional parameters passed to the \code{\link{nlm}} optimization routine.
+      additional parameters passed to the \code{\link{nlm}} or \code{\link{adam}} optimization routines.
   }
   \item{parms}{
       list containing QRNN weight matrices and other parameters from \code{\link{qrnn2.fit}}.
   }
 }
 \seealso{
-    \code{\link{qrnn.predict}}, \code{\link{qrnn.cost}}, \code{\link{composite.stack}}, \code{\link{mcqrnn}}
+    \code{\link{qrnn.fit}}, \code{\link{qrnn.predict}},
+    \code{\link{qrnn.cost}}, \code{\link{composite.stack}},
+    \code{\link{mcqrnn}}, \code{\link{adam}}
 }
 \examples{
 x <- as.matrix(iris[,"Petal.Length",drop=FALSE])
@@ -131,7 +137,8 @@ Cannon, A.J., 2011. Quantile regression neural networks: implementation
 in R and application to precipitation downscaling. Computers & Geosciences,
 37: 1277-1284. doi:10.1016/j.cageo.2010.07.005
 
-Cannon, A.J., 2017. Non-crossing nonlinear regression quantiles by monotone
+Cannon, A.J., 2018. Non-crossing nonlinear regression quantiles by monotone
 composite quantile regression neural network, with application to rainfall
-extremes. EarthArXiv <https://eartharxiv.org/wg7sn>. doi:10.17605/OSF.IO/WG7SN
+extremes. Stochastic Environmental Research and Risk Assessment
+<https://dx.doi.org/10.1007/s00477-018-1573-6>. doi:10.1007/s00477-018-1573-6
 }

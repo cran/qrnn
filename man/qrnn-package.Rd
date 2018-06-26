@@ -6,7 +6,7 @@
 \encoding{UTF-8}
 \description{
 This package implements the quantile regression neural network (QRNN)
-(Taylor, 2000; Cannon, 2011; Cannon, 2017), which is a flexible nonlinear form
+(Taylor, 2000; Cannon, 2011; Cannon, 2018), which is a flexible nonlinear form
 of quantile regression. The goal of quantile regression is to estimate
 conditional quantiles of a response variable that depend on covariates
 in some form of regression equation. The QRNN adopts the multi-layer
@@ -17,20 +17,21 @@ allowing predictions for mixed discrete-continuous variables like precipitation
 regression cost function is adopted so that a simplified form of the finite
 smoothing algorithm (Chen, 2007) can be used to estimate model parameters.
 This approximation can also be used to force the model to solve a standard
-least squares regression problem or an expectile regression problem (Cannon, 2017).
+least squares regression problem or an expectile regression problem (Cannon, 2018).
 Weight penalty regularization can be added to help avoid overfitting, and
 ensemble models with bootstrap aggregation are also provided.
 
 An optional monotone constraint can be invoked, which guarantees monotonic
 non-decreasing behaviour of model outputs with respect to specified covariates
 (Zhang, 1999). The input-hidden layer weight matrix can also be constrained
-so that model relationships are strictly additive (see \code{\link{gam.style}}; Cannon, 2017). Borrowing strength by using a composite model for multiple
+so that model relationships are strictly additive (see \code{\link{gam.style}};
+Cannon, 2018). Borrowing strength by using a composite model for multiple
 regression quantiles (Zou et al., 2008; Xu et al., 2017) is also possible
 (see \code{\link{composite.stack}}). Weights can be applied to individual
 cases (Jiang et al., 2012).
 
 Applying the monotone constraint in combination with the composite model allows
-one to simultaneously estimate multiple non-crossing quantiles (Cannon, 2017);
+one to simultaneously estimate multiple non-crossing quantiles (Cannon, 2018);
 the resulting monotone composite QRNN (MCQRNN) is provided by the
 \code{\link{mcqrnn.fit}} and \code{\link{mcqrnn.predict}} wrapper functions.
 Examples for \code{\link{qrnn.fit}} and \code{\link{qrnn2.fit}} show how the
@@ -74,9 +75,10 @@ Cannon, A.J., 2011. Quantile regression neural networks: implementation
 in R and application to precipitation downscaling. Computers & Geosciences,
 37: 1277-1284. doi:10.1016/j.cageo.2010.07.005
 
-Cannon, A.J., 2017. Non-crossing nonlinear regression quantiles by monotone
+Cannon, A.J., 2018. Non-crossing nonlinear regression quantiles by monotone
 composite quantile regression neural network, with application to rainfall
-extremes. EarthArXiv <https://eartharxiv.org/wg7sn>. doi:10.17605/OSF.IO/WG7SN
+extremes. Stochastic Environmental Research and Risk Assessment
+<https://dx.doi.org/10.1007/s00477-018-1573-6>. doi:10.1007/s00477-018-1573-6
 
 Chen, C., 2007. A finite smoothing algorithm for quantile regression.
 Journal of Computational and Graphical Statistics, 16: 136-164.

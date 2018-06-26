@@ -4,7 +4,8 @@ mcqrnn.fit <- function(x, y, n.hidden=2, n.hidden2=NULL, w=NULL,
                        init.range = c(-0.5, 0.5, -0.5, 0.5, -0.5, 0.5),
                        monotone=NULL, eps.seq=2^(-8:-32), Th=sigmoid,
                        Th.prime=sigmoid.prime, penalty=0,
-                       n.errors.max=10, trace=TRUE, ...){
+                       n.errors.max=10, trace=TRUE,
+                       method=c("nlm", "adam"), ...){
     if(length(tau)==1) stop("Multiple values of \"tau\" required")
     x.y.tau <- composite.stack(x, y, tau)
     taus <- x.y.tau$tau
@@ -31,7 +32,8 @@ mcqrnn.fit <- function(x, y, n.hidden=2, n.hidden2=NULL, w=NULL,
                            init.range=init.range, monotone=monotone,
                            eps.seq=eps.seq, Th=Th, Th.prime=Th.prime,
                            penalty=penalty, unpenalized=1,
-                           n.errors.max=n.errors.max, trace=trace, ...)
+                           n.errors.max=n.errors.max, trace=trace, 
+                           method=method, ...)
     }
     parms
 }
@@ -49,4 +51,3 @@ mcqrnn.predict <- function(x, parms, tau=NULL){
     colnames(pred) <- paste0('tau=', tau)
     pred
 }
-

@@ -215,7 +215,8 @@ Cannon, A.J., 2011. Quantile regression neural networks: implementation
 in R and application to precipitation downscaling. Computers & Geosciences,
 37: 1277-1284. doi:10.1016/j.cageo.2010.07.005
 
-Cannon, A.J., 2017. Non-crossing nonlinear regression quantiles by monotone
+Cannon, A.J., 2018. Non-crossing nonlinear regression quantiles by monotone
 composite quantile regression neural network, with application to rainfall
-extremes. EarthArXiv <https://eartharxiv.org/wg7sn>. doi:10.17605/OSF.IO/WG7SN
+extremes. Stochastic Environmental Research and Risk Assessment
+<https://dx.doi.org/10.1007/s00477-018-1573-6>. doi:10.1007/s00477-018-1573-6
 }
