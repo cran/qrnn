@@ -1,7 +1,7 @@
 Package: qrnn
 Type: Package
 Title: Quantile Regression Neural Network
-Version: 2.0.3
+Version: 2.0.4
 Authors@R: person(given="Alex J.", family="Cannon",
     email="alex.cannon@canada.ca", role=c("aut", "cre"),
     comment=c(ORCID="0000-0002-8025-3790"))
@@ -14,7 +14,7 @@ License: GPL-2
 LazyLoad: yes
 Repository: CRAN
 NeedsCompilation: no
-Packaged: 2018-06-26 22:01:09 UTC; ECPACIFIC+CannonA
 Author: Alex J. Cannon [aut, cre] (<https://orcid.org/0000-0002-8025-3790>)
 Maintainer: Alex J. Cannon <alex.cannon@canada.ca>
-Date/Publication: 2018-06-26 22:42:54 UTC
+Packaged: 2019-06-12 17:38:26 UTC; ECPACIFIC+CannonA
+Date/Publication: 2019-06-13 17:30:05 UTC

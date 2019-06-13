@@ -67,10 +67,10 @@ points(x, y, pch=20)
 }
 
 \references{
-Cannon, A.J., 2018. Non-crossing nonlinear regression quantiles by monotone
-composite quantile regression neural network, with application to rainfall
-extremes. Stochastic Environmental Research and Risk Assessment
-<https://dx.doi.org/10.1007/s00477-018-1573-6>. doi:10.1007/s00477-018-1573-6
+Cannon, A.J., 2018. Non-crossing nonlinear regression quantiles by
+monotone composite quantile regression neural network, with application
+to rainfall extremes. Stochastic Environmental Research and Risk Assessment,
+32(11): 3207-3225. doi:10.1007/s00477-018-1573-6
 
 Xu, Q., K. Deng, C. Jiang, F. Sun, and X. Huang, 2017. Composite quantile 
 regression neural network with applications. Expert Systems with Applications,

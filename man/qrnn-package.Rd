@@ -75,10 +75,10 @@ Cannon, A.J., 2011. Quantile regression neural networks: implementation
 in R and application to precipitation downscaling. Computers & Geosciences,
 37: 1277-1284. doi:10.1016/j.cageo.2010.07.005
 
-Cannon, A.J., 2018. Non-crossing nonlinear regression quantiles by monotone
-composite quantile regression neural network, with application to rainfall
-extremes. Stochastic Environmental Research and Risk Assessment
-<https://dx.doi.org/10.1007/s00477-018-1573-6>. doi:10.1007/s00477-018-1573-6
+Cannon, A.J., 2018. Non-crossing nonlinear regression quantiles by
+monotone composite quantile regression neural network, with application
+to rainfall extremes. Stochastic Environmental Research and Risk Assessment,
+32(11): 3207-3225. doi:10.1007/s00477-018-1573-6
 
 Chen, C., 2007. A finite smoothing algorithm for quantile regression.
 Journal of Computational and Graphical Statistics, 16: 136-164.

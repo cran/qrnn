@@ -15,7 +15,7 @@ citEntry(entry="Article",
          author       = "Alex J. Cannon",
          year         = "2018",
          journal      = "Stochastic Environmental Research and Risk Assessment",
-         volume       = "<https://dx.doi.org/10.1007/s00477-018-1573-6>",
-         pages        = "doi:10.1007/s00477-018-1573-6",
-         textVersion  = "Cannon, A.J., 2018. Non-crossing nonlinear regression quantiles by monotone composite quantile regression neural network, with application to rainfall extremes. Stochastic Environmental Research and Risk Assessment <https://dx.doi.org/10.1007/s00477-018-1573-6>. doi:10.1007/s00477-018-1573-6"
+         volume       = "32(11)",
+         pages        = "3207-3225. doi:10.1007/s00477-018-1573-6",
+         textVersion  = "Cannon, A.J., 2018. Non-crossing nonlinear regression quantiles by monotone composite quantile regression neural network, with application to rainfall extremes. Stochastic Environmental Research and Risk Assessment, 32(11): 3207-3225. doi:10.1007/s00477-018-1573-6"
 )

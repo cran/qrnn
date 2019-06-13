@@ -2,7 +2,7 @@ mcqrnn.fit <- function(x, y, n.hidden=2, n.hidden2=NULL, w=NULL,
                        tau=c(0.1, 0.5, 0.9), iter.max=5000,
                        n.trials=5, lower=-Inf,
                        init.range = c(-0.5, 0.5, -0.5, 0.5, -0.5, 0.5),
-                       monotone=NULL, eps.seq=2^(-8:-32), Th=sigmoid,
+                       monotone=NULL, eps.seq=2^seq(-8, -32, by=-4), Th=sigmoid,
                        Th.prime=sigmoid.prime, penalty=0,
                        n.errors.max=10, trace=TRUE,
                        method=c("nlm", "adam"), ...){

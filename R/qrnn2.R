@@ -135,9 +135,9 @@ qrnn2.fit <-
 function(x, y, n.hidden=2, n.hidden2=2, w=NULL, tau=0.5, n.ensemble=1,
          iter.max=5000, n.trials=5, bag=FALSE, lower=-Inf,
          init.range=c(-0.5, 0.5, -0.5, 0.5, -0.5, 0.5),
-         monotone=NULL, eps.seq=2^(-8:-32), Th=sigmoid, Th.prime=sigmoid.prime,
-         penalty=0, unpenalized=NULL, n.errors.max=10, trace=TRUE,
-         method=c("nlm", "adam"), ...)
+         monotone=NULL, eps.seq=2^seq(-8, -32, by=-4), Th=sigmoid,
+         Th.prime=sigmoid.prime, penalty=0, unpenalized=NULL, n.errors.max=10,
+         trace=TRUE, method=c("nlm", "adam"), ...)
 
 {
     method <- match.arg(method)
