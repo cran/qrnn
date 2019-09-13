@@ -46,9 +46,28 @@ constraints, a second hidden layer may sometimes be beneficial
 (Lang, 2005; Minin et al., 2010). QRNN models with two hidden layers are
 available using the \code{\link{qrnn2.fit}} and
 \code{\link{qrnn2.predict}} functions. For non-crossing quantiles, the
-\code{\link{mcqrnn.fit}} wrapper also allows models with one or two hidden
-layers to be fitted.
+\code{\link{mcqrnn.fit}} and \code{\link{mcqrnn.predict}} wrappers also allow
+models with one or two hidden layers to be fitted and predictions to be made
+from the fitted models.
 
+In general, \code{\link{mcqrnn.fit}} offers a convenient, single function for 
+fitting multiple quantiles simultaneously. Note, however, that default 
+settings in \code{\link{mcqrnn.fit}} and other model fitting functions are 
+not optimized for general speed, memory efficiency, or accuracy and should be 
+adjusted for a particular regression problem as needed. In particular, the 
+approximation to the quantile regression cost function \code{eps.seq}, the 
+number of trials \code{n.trials}, and number of iterations \code{iter.max} 
+can all influence fitting speed (and accuracy), as can changing the 
+optimization algorithm via \code{method}. Non-crossing quantiles are 
+implemented by stacking multiple copies of the \code{x} and \code{y} data, 
+one copy per value of \code{tau}. Depending on the dataset size, this can 
+lead to large matrices being passed to the optimization routine. In the 
+\code{\link{adam}} method, the \code{minibatch} size can be adjusted to help 
+offset this cost. Model complexity is determined via the number of hidden 
+nodes, \code{n.hidden} and \code{n.hidden2}, as well as the optional weight 
+penalty \code{penalty}; values of these hyperparameters are crucial to 
+obtaining a well performing model.
+ 
 If models for multiple quantiles have been fitted, for example by
 \code{\link{mcqrnn.fit}} or multiple calls to either \code{\link{qrnn.fit}}
 or \code{\link{qrnn2.fit}}, the (experimental) \code{\link{dquantile}}

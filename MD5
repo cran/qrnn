@@ -1,4 +1,4 @@
-dae76860181a13ba615401a52ae563e4 *DESCRIPTION
+6e9ef8831626aba27698d568bb79fa5d *DESCRIPTION
 8d102ce42469739e3a826f935ea84d49 *NAMESPACE
 5b556573ed5cac147cf00319800ec152 *R/censored.mean.R
 d9a671906fc8673cae7afbf94fa2e371 *R/composite.stack.R
@@ -9,7 +9,7 @@ e301bccca3d61624821eafe475632123 *R/huber.R
 c616d779e1e2f874f380779299f78d2e *R/mcqrnn.R
 6a8d084ac045a78dd671a752bf3a10d1 *R/qrnn-rbf.R
 41941a10cd46bfa9e7ac636527859c10 *R/qrnn.R
-871c510493089da77a6c4033b4ba9d3f *R/qrnn2.R
+7dcc85203842be1e8ad062f51456b018 *R/qrnn2.R
 66e1246d2cd079be22416bd0a7f09a20 *R/quantile.dtn.R
 0fcfe460ea1a483ebbb53b9a1ae26ab5 *R/tilted.abs.R
 bd5e8d2dc7057f1fe2c925aae0293033 *R/transfer.R
@@ -23,7 +23,7 @@ f354e64966e7c02998460f06af0713b5 *man/censored.mean.Rd
 563d8a9ee3808e653a4267e91cd872c8 *man/gam.style.Rd
 1de261206c277a00b066ccaa717c3325 *man/huber.Rd
 782af3425ab7a6dd788aa5ec2319cf11 *man/mcqrnn.Rd
-a43789f6a015948825df10a78dd427d7 *man/qrnn-package.Rd
+223dfc2a9bf7456eef4919a6b35bea50 *man/qrnn-package.Rd
 031612666629bf8e182b345366ef6907 *man/qrnn-rbf.Rd
 ac14012a59a36ca3495220e70210bc0e *man/qrnn.cost.Rd
 106eb14d1d1d6e0baa3730debef8d288 *man/qrnn.fit.Rd

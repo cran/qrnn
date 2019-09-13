@@ -96,12 +96,15 @@ function(x, y, n.hidden, n.hidden2,
 adam <- function(f, p, x, y, w, tau, ..., iterlim=5000, iterbreak=iterlim,
                  alpha=0.01, minibatch=nrow(x), beta1=0.9, beta2=0.999,
                  epsilon=1e-8, print.level=10){
+    minibatch <- min(minibatch, nrow(x))
+    if(minibatch < 1) minibatch <- 1
     minibatches <- suppressWarnings(matrix(seq_along(y), nrow=minibatch))
     f.best <- f(p, x=x, y=y, w=w, tau=tau, ...)
     p.best <- p
     i.break <- 0
     M <- R <- p*0
-    if(print.level > 0) cat(0, f.best, i.break, f.best, "\n")
+    if(print.level > 0)
+        cat("minibatch = ", minibatch, "\n", 0, f.best, i.break, f.best, "\n")
     for(iter in seq(iterlim)){
         cases.random <- sample(nrow(x))
         for(i in seq(ncol(minibatches))){
@@ -236,8 +239,7 @@ function(x, y, n.hidden, n.hidden2, w, tau, iter.max, n.trials, bag, lower,
                            iterlim=iter.max, n.hidden=n.hidden,
                            n.hidden2=n.hidden2, lower=lower, monotone=monotone,
                            eps=eps, Th=Th, Th.prime=Th.prime,
-                           penalty=penalty, unpenalized=unpenalized,
-                           minibatch=nrow(x), ...))
+                           penalty=penalty, unpenalized=unpenalized, ...))
             }
             weights <- fit$estimate
         }
