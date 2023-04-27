@@ -123,18 +123,23 @@ function(x, y, n.hidden, w=NULL, tau=0.5, n.ensemble=1, iter.max=5000,
 qrnn.initialize <-
 function(x, y, n.hidden, init.range=c(-0.5, 0.5, -0.5, 0.5))
 {
-    if(length(init.range)==4){
-        r11 <- init.range[1]
-        r12 <- init.range[2]
-        r21 <- init.range[3]
-        r22 <- init.range[4]
+    if(!is.list(init.range)){
+        if(length(init.range)==4){
+            r11 <- init.range[1]
+            r12 <- init.range[2]
+            r21 <- init.range[3]
+            r22 <- init.range[4]
+        } else{
+            r11 <- r21 <- init.range[1]
+            r12 <- r22 <- init.range[2]
+        }
+        W1 <- matrix(runif((ncol(x)+1)*n.hidden, r11, r12), ncol(x)+1, n.hidden)
+        W2 <- matrix(runif((n.hidden+1)*ncol(y), r21, r22), n.hidden+1, ncol(y))
+        weights <- c(W1, W2)
     } else{
-        r11 <- r21 <- init.range[1]
-        r12 <- r22 <- init.range[2]
+        weights <- unlist(init.range)
     }
-    W1 <- matrix(runif((ncol(x)+1)*n.hidden, r11, r12), ncol(x)+1, n.hidden)
-    W2 <- matrix(runif((n.hidden+1)*ncol(y), r21, r22), n.hidden+1, ncol(y))
-    c(W1, W2)
+    weights
 }
 qrnn.nlm <-
 function(x, y, n.hidden, w, tau, iter.max, n.trials, bag, lower, init.range,
@@ -148,7 +153,7 @@ function(x, y, n.hidden, w, tau, iter.max, n.trials, bag, lower, init.range,
     w <- w[cases]
     if(length(tau) > 1) tau <- tau[cases]
     if(length(lower) > 1) lower <- lower[cases]
-	eps.seq <- sort(eps.seq, decreasing=TRUE)
+    eps.seq <- sort(eps.seq, decreasing=TRUE)
     cost.best <- Inf
     for(i in seq(n.trials)){
         weights <- qrnn.initialize(x, y, n.hidden, init.range)
@@ -227,4 +232,3 @@ function(x, y, weights, n.hidden)
     W2 <- matrix(W2, N21, N22)
     list(W1=W1, W2=W2)
 }
-

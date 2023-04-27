@@ -1,7 +1,7 @@
 Package: qrnn
 Type: Package
 Title: Quantile Regression Neural Network
-Version: 2.0.5
+Version: 2.1
 Authors@R: person(given="Alex J.", family="Cannon",
     email="alex.cannon@canada.ca", role=c("aut", "cre"),
     comment=c(ORCID="0000-0002-8025-3790"))
@@ -10,11 +10,12 @@ Description: Fit quantile regression neural network models with optional
     model constraints, and the ability to fit multiple non-crossing quantile
     functions following Cannon (2011) <doi:10.1016/j.cageo.2010.07.005>
     and Cannon (2018) <doi:10.1007/s00477-018-1573-6>.
+Date: 2023-04-25
 License: GPL-2
 LazyLoad: yes
 Repository: CRAN
 NeedsCompilation: no
 Author: Alex J. Cannon [aut, cre] (<https://orcid.org/0000-0002-8025-3790>)
 Maintainer: Alex J. Cannon <alex.cannon@canada.ca>
-Packaged: 2019-09-12 21:29:20 UTC; ECPACIFIC+CannonA
-Date/Publication: 2019-09-13 05:10:02 UTC
+Packaged: 2023-04-26 16:36:54 UTC; acannon
+Date/Publication: 2023-04-27 08:30:19 UTC

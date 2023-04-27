@@ -3,9 +3,12 @@
 \alias{pquantile}
 \alias{qquantile}
 \alias{rquantile}
+\alias{pquantile.nw}
+\alias{qquantile.nw}
+\alias{rquantile.nw}
 \encoding{UTF-8}
 \title{
-Interpolated quantile distribution with exponential tails
+Interpolated quantile distribution with exponential tails and Nadaraya-Watson quantile distribution
 }
 \description{
 \code{dquantile} gives a probability density function (pdf) by combining
@@ -18,7 +21,9 @@ function (cdf); the \code{\link{integrate}} function is used for values
 outside the range of \code{quant}. The inverse cdf is given by
 \code{qquantile}; the \code{\link{uniroot}} function is used for values
 outside the range of \code{tau}. \code{rquantile} is used for
-generating random variates.
+generating random variates. Alternative formulations based on the
+Nadaraya-Watson estimator \code{[p,q,r]quantile.nw} are also provided
+(Passow and Donner, 2020).
 
 Note: these functions have not been extensively tested or optimized and 
 should be considered experimental.
@@ -78,6 +83,11 @@ rquantile(n, tau, quant, lower=-Inf,
 Cannon, A.J., 2011. Quantile regression neural networks: implementation
 in R and application to precipitation downscaling. Computers & Geosciences,
 37: 1277-1284. doi:10.1016/j.cageo.2010.07.005
+
+Passow, C., R.V. Donner, 2020. Regression-based distribution mapping for
+bias correction of climate model outputs using linear quantile regression.
+Stochastic Environmental Research and Risk Assessment, 34:87-102.
+doi:10.1007/s00477-019-01750-7
 
 Quiñonero-Candela, J., C. Rasmussen, F. Sinz, O. Bousquet,
 B. Scholkopf, 2006. Evaluating Predictive Uncertainty Challenge.

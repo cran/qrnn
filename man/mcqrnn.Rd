@@ -38,11 +38,14 @@ mcqrnn.predict(x, parms, tau=NULL)
       number of hidden nodes in the second hidden layer; \code{NULL} fits a model with a single hidden layer.
   }
   \item{w}{
-      vector of weights with length equal to the number of samples times the length of \code{tau};
-      \code{NULL} gives equal weight to each sample. See \code{composite.stack}.
+      if \code{tau} specifies a finite number of tau-quantiles, a vector of weights with length equal to the number of samples
+      times the length of \code{tau}; see \code{composite.stack}. Otherwise, a vector of weights with length equal to the
+      number of samples. \code{NULL} gives equal weight to each sample. 
   } 
   \item{tau}{
       desired tau-quantiles; \code{NULL} in \code{mcqrnn.predict} uses values from the original call to \code{mcqrnn.fit}.
+      If \code{tau} is an integer, specifies the number of random samples used for stochastic estimation of the full quantile
+      regression process.
   }
   \item{iter.max}{
       maximum number of iterations of the optimization algorithm.
@@ -54,7 +57,8 @@ mcqrnn.predict(x, parms, tau=NULL)
       left censoring point.
   }
   \item{init.range}{
-      initial weight range for input-hidden, hidden-hidden, and hidden-output weight matrices.
+      initial weight range for input-hidden, hidden-hidden, and hidden-output weight matrices. If supplied with a list
+      of weight matrices from a prior run of \code{mcqrnn.fit}, will restart model fitting with these values. 
   }
   \item{monotone}{
       column indices of covariates for which the monotonicity constraint should hold.
@@ -63,7 +67,8 @@ mcqrnn.predict(x, parms, tau=NULL)
       sequence of \code{eps} values for the finite smoothing algorithm.
   }
   \item{Th}{
-      hidden layer transfer function; use \code{\link{sigmoid}}, \code{\link{elu}}, \code{\link{softplus}}, or other non-decreasing function.
+      hidden layer transfer function; use \code{\link{sigmoid}}, \code{\link{elu}}, \code{\link{softplus}}, or other
+      non-decreasing function.
   }
   \item{Th.prime}{
       derivative of the hidden layer transfer function \code{Th}.

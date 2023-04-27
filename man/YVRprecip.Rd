@@ -14,7 +14,7 @@ geopotential heights (m) from the NCEP/NCAR Reanalysis
 (Kalnay et al., 1996) grid point centered on 50 deg. N and 237.5 deg. E.
 
 NCEP/NCAR Reanalysis data provided by the NOAA/OAR/ESRL PSD, Boulder,
-Colorado, USA, from their Web site at \url{http://www.esrl.noaa.gov/psd/}.
+Colorado, USA, from their Web site at \url{https://psl.noaa.gov/}.
 }
 \references{
 Kalnay, E. et al., 1996. The NCEP/NCAR 40-year reanalysis project,
