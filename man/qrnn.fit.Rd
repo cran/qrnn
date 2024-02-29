@@ -25,13 +25,6 @@ is set to \code{0.5}, then the result will be a standard least squares
 regression model. The same value of \code{eps.seq} and other values
 of \code{tau} leads to expectile regression.)
 
-The hidden layer transfer function \code{Th} and its derivative
-\code{Th.prime} should be set to \code{\link{sigmoid}},
-\code{\link{elu}}, or \code{\link{softplus}} and
-\code{\link{sigmoid.prime}}, \code{\link{elu.prime}}, or \code{\link{softplus.prime}}
-for a nonlinear model and to \code{\link{linear}} and
-\code{\link{linear.prime}} for a linear model.
-
 If invoked, the \code{monotone} argument enforces non-decreasing behaviour
 between specified columns of \code{x} and model outputs. This holds if
 \code{Th} and \code{To} are monotone non-decreasing functions. In this case,
@@ -80,7 +73,8 @@ rescaled by the user. All variables are automatically scaled to zero
 mean and unit standard deviation prior to fitting and parameters are
 automatically rescaled by \code{\link{qrnn.predict}} and other prediction
 functions. Values of \code{eps.seq} are relative to the residuals in
-standard deviation units.
+standard deviation units. Note: scaling of \code{y} can be turned off using
+the \code{scale.y} argument.
 }
 \usage{
 qrnn.fit(x, y, n.hidden, w=NULL, tau=0.5, n.ensemble=1,
@@ -88,7 +82,8 @@ qrnn.fit(x, y, n.hidden, w=NULL, tau=0.5, n.ensemble=1,
          init.range=c(-0.5, 0.5, -0.5, 0.5), monotone=NULL,
          additive=FALSE, eps.seq=2^seq(-8, -32, by=-4),
          Th=sigmoid, Th.prime=sigmoid.prime, penalty=0,
-         unpenalized=NULL, n.errors.max=10, trace=TRUE, ...)
+         unpenalized=NULL, n.errors.max=10, trace=TRUE,
+         scale.y=TRUE, ...)
 }
 \arguments{
   \item{x}{
@@ -135,7 +130,8 @@ qrnn.fit(x, y, n.hidden, w=NULL, tau=0.5, n.ensemble=1,
       sequence of \code{eps} values for the finite smoothing algorithm.
   }
   \item{Th}{
-      hidden layer transfer function; use \code{\link{sigmoid}}, \code{\link{elu}}, or \code{\link{softplus}} for a nonlinear model and \code{\link{linear}} for a linear model.
+      hidden layer transfer function; use \code{\link{sigmoid}}, \code{\link{elu}}, \code{\link{relu}}, \code{\link{lrelu}}, 
+      \code{\link{softplus}}, or other non-decreasing function for a nonlinear model and \code{\link{linear}} for a linear model.
   }
   \item{Th.prime}{
       derivative of the hidden layer transfer function \code{Th}.
@@ -151,6 +147,9 @@ qrnn.fit(x, y, n.hidden, w=NULL, tau=0.5, n.ensemble=1,
   }
   \item{trace}{
       logical variable indicating whether or not diagnostic messages are printed during optimization.
+  }
+  \item{scale.y}{
+      logical variable indicating whether \code{y} should be scaled to zero mean and unit standard deviation.
   }
   \item{\dots}{
       additional parameters passed to the \code{\link{nlm}} optimization routine.

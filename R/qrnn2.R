@@ -145,7 +145,7 @@ function(x, y, n.hidden=2, n.hidden2=2, w=NULL, tau=0.5, n.ensemble=1,
          init.range=c(-0.5, 0.5, -0.5, 0.5, -0.5, 0.5),
          monotone=NULL, eps.seq=2^seq(-8, -32, by=-4), Th=sigmoid,
          Th.prime=sigmoid.prime, penalty=0, unpenalized=NULL, n.errors.max=10,
-         trace=TRUE, method=c("nlm", "adam"), ...)
+         trace=TRUE, method=c("nlm", "adam"), scale.y=TRUE, ...)
 
 {
     method <- match.arg(method)
@@ -157,19 +157,28 @@ function(x, y, n.hidden=2, n.hidden2=2, w=NULL, tau=0.5, n.ensemble=1,
     if (any((tau > 1) | (tau < 0))) stop("invalid \"tau\"")
     if (identical(Th, linear))
         stop("use \"qrnn.fit\" for linear models")
-    is.whole <- function(x, tol = .Machine$double.eps^0.5) 
-        abs(x - round(x)) < tol
     if(is.null(w)) w <- rep(1/nrow(y), nrow(y))
     if (any(w < 0)) stop("invalid \"w\"")
     x <- scale(x)
     x.center <- attr(x, "scaled:center")
     x.scale <- attr(x, "scaled:scale")
-    y <- scale(y)
+    if(scale.y){
+        y <- scale(y)
+    } else{
+        attr(y, "scaled:center") <- 0
+        attr(y, "scaled:scale") <- 1
+    }
     y.center <- attr(y, "scaled:center")
     y.scale <- attr(y, "scaled:scale")
     lower.scaled <- (lower-y.center)/y.scale
     weights <- vector("list", n.ensemble)
-    if(trace) cat("tau =", unique(tau), "\n", sep=" ")
+    if(trace){
+        if(length(unique(tau)) <= 100){
+            cat("tau =", unique(tau), "\n", sep=" ")
+        } else{
+            cat("tau = [", range(tau), "]; n.tau =", length(tau), "\n", sep=" ") 
+        }
+    }
     for (i in seq(n.ensemble)){
         if(trace) cat(i, "/", n.ensemble, "\n", sep="")
         w.tmp <- NA

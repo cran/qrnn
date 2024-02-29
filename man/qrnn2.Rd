@@ -15,7 +15,7 @@ qrnn2.fit(x, y, n.hidden=2, n.hidden2=2, w=NULL, tau=0.5,
           monotone=NULL, eps.seq=2^seq(-8, -32, by=-4), Th=sigmoid,
           Th.prime=sigmoid.prime, penalty=0, unpenalized=NULL,
           n.errors.max=10, trace=TRUE, method=c("nlm", "adam"),
-          ...)
+          scale.y=TRUE, ...)
 qrnn2.predict(x, parms)
 }
 \arguments{
@@ -63,7 +63,8 @@ qrnn2.predict(x, parms)
       sequence of \code{eps} values for the finite smoothing algorithm.
   }
   \item{Th}{
-      hidden layer transfer function; use \code{\link{sigmoid}}, \code{\link{elu}}, or \code{\link{softplus}} for a nonlinear model and \code{\link{linear}} for a linear model.
+      hidden layer transfer function; use \code{\link{sigmoid}}, \code{\link{elu}}, \code{\link{relu}}, \code{\link{lrelu}}, 
+      \code{\link{softplus}}, or other non-decreasing function for a nonlinear model and \code{\link{linear}} for a linear model.
   }
   \item{Th.prime}{
       derivative of the hidden layer transfer function \code{Th}.
@@ -82,6 +83,9 @@ qrnn2.predict(x, parms)
   }
   \item{method}{
       character string indicating which optimization algorithm to use.
+  }
+  \item{scale.y}{
+      logical variable indicating whether \code{y} should be scaled to zero mean and unit standard deviation.
   }
   \item{\dots}{
       additional parameters passed to the \code{\link{nlm}} or \code{\link{adam}} optimization routines.

@@ -5,6 +5,8 @@
 \alias{elu.prime}
 \alias{softplus}
 \alias{softplus.prime}
+\alias{logistic}
+\alias{logistic.prime}
 \alias{lrelu}
 \alias{lrelu.prime}
 \alias{relu}
@@ -32,6 +34,8 @@ elu(x, alpha=1)
 elu.prime(x, alpha=1)
 softplus(x, alpha=2)
 softplus.prime(x, alpha=2)
+logistic(x)
+logistic.prime(x)
 lrelu(x)
 lrelu.prime(x)
 relu(x)
@@ -55,6 +59,8 @@ lines(x, elu(x), col="red")
 lines(x, elu.prime(x), lty=2, col="red")
 lines(x, softplus(x), col="blue")
 lines(x, softplus.prime(x), lty=2, col="blue")
+lines(x, logistic(x), col="brown")
+lines(x, logistic.prime(x), lty=2, col="brown")
 lines(x, lrelu(x), col="orange")
 lines(x, lrelu.prime(x), lty=2, col="orange")
 lines(x, relu(x), col="pink")

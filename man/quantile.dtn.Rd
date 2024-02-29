@@ -21,7 +21,9 @@ function (cdf); the \code{\link{integrate}} function is used for values
 outside the range of \code{quant}. The inverse cdf is given by
 \code{qquantile}; the \code{\link{uniroot}} function is used for values
 outside the range of \code{tau}. \code{rquantile} is used for
-generating random variates. Alternative formulations based on the
+generating random variates. 
+
+Alternative formulations (without left censoring) based on the
 Nadaraya-Watson estimator \code{[p,q,r]quantile.nw} are also provided
 (Passow and Donner, 2020).
 
@@ -32,12 +34,15 @@ should be considered experimental.
 \usage{
 dquantile(x, tau, quant, lower=-Inf)
 pquantile(q, tau, quant, lower=-Inf, ...)
+pquantile.nw(q, tau, quant, h=0.001, ...)
 qquantile(p, tau, quant, lower=-Inf,
           tol=.Machine$double.eps^0.25, maxiter=1000,
           range.mult=1.1, max.error=100, ...)
+qquantile.nw(p, tau, quant, h=0.001)
 rquantile(n, tau, quant, lower=-Inf,
           tol=.Machine$double.eps^0.25, maxiter=1000,
           range.mult=1.1, max.error=100, ...)
+rquantile.nw(n, tau, quant, h=0.001)
 }
 \arguments{
   \item{x, q}{
@@ -61,6 +66,10 @@ rquantile(n, tau, quant, lower=-Inf,
   \item{tol}{
       tolerance passed to \code{\link{uniroot}}.
   }
+  \item{h}{
+      bandwidth for Nadaraya-Watson kernel.
+  }
+  
   \item{maxiter}{
       maximum number of iterations passed to \code{\link{uniroot}}.
   }
@@ -71,7 +80,7 @@ rquantile(n, tau, quant, lower=-Inf,
       maximum number of \code{uniroot} errors allowed before termination.
   }
   \item{...}{
-      additional arguments passed to \code{\link{integrate}}.
+      additional arguments passed to \code{\link{integrate}} or \code{\link{uniroot}}.
   }
 }
 \value{
@@ -98,7 +107,7 @@ Lecture Notes in Artificial Intelligence, 3944: 1-27.
 }
 \examples{
 ## Normal distribution
-tau <- seq(0.05, 0.95, by=0.05)
+tau <- c(0.01, seq(0.05, 0.95, by=0.05), 0.99)
 quant <- qnorm(tau)
 
 x <- seq(-3, 3, length=500)
@@ -111,6 +120,11 @@ plot(q, pnorm(q), type="b", col="red", lty=2, lwd=2,
      main="cdf")
 lines(q, pquantile(q, tau, quant),
       col="blue")
+
+abline(v=1.96, lty=2)
+abline(h=pnorm(1.96), lty=2)
+abline(h=pquantile(1.96, tau, quant), lty=3)
+abline(h=pquantile.nw(1.96, tau, quant, h=0.01), lty=3)
 
 p <- c(0.001, 0.01, 0.025, seq(0.05, 0.95, by=0.05),
        0.975, 0.99, 0.999)

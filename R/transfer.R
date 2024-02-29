@@ -56,6 +56,14 @@ relu <- function(x){
     ifelse(x >= 0, x, 0)
 }
 
+logistic.prime <- function(x){
+    0.25/(cosh(x/2)^2)
+}
+
+logistic <- function(x){
+    0.5 + 0.5*tanh(x/2)
+}
+
 lrelu.prime <- function(x){
     ifelse(x >= 0, 1, 0.01)
 }

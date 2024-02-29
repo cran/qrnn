@@ -5,9 +5,9 @@ mcqrnn.fit <- function(x, y, n.hidden=2, n.hidden2=NULL, w=NULL,
                        monotone=NULL, eps.seq=2^seq(-8, -32, by=-4),
                        Th=sigmoid, Th.prime=sigmoid.prime, penalty=0,
                        n.errors.max=10, trace=TRUE,
-                       method=c("nlm", "adam"), ...){
+                       method=c("nlm", "adam"), scale.y=TRUE, ...){
     if(length(tau)==1 && is.integer(tau)){
-        cat(paste("Stochastic estimation of quantile regression process using", tau, "samples\n"))
+        if(trace) cat(paste("Stochastic estimation of quantile regression process using", tau, "samples\n"))
         xs <- matrix(NA, ncol=ncol(x), nrow=tau)
         ys <- matrix(NA, ncol=1, nrow=tau)
         taus <- rep(NA, tau)
@@ -26,6 +26,8 @@ mcqrnn.fit <- function(x, y, n.hidden=2, n.hidden2=NULL, w=NULL,
         xs <- cbind(taus, xs)
         if(!is.null(w)) w <- ws
     } else{
+        if(length(tau)==1)
+            stop("Improper \'tau\' for stochastic estimation of quantile regression process (e.g., \'tau\' is not an integer)")
         x.y.tau <- composite.stack(x, y, tau)
         taus <- x.y.tau$tau
         xs <- cbind(taus, x.y.tau$x)
@@ -45,7 +47,8 @@ mcqrnn.fit <- function(x, y, n.hidden=2, n.hidden2=NULL, w=NULL,
                           init.range=init.range, monotone=monotone,
                           eps.seq=eps.seq, Th=Th, Th.prime=Th.prime,
                           penalty=penalty, unpenalized=1,
-                          n.errors.max=n.errors.max, trace=trace, ...)
+                          n.errors.max=n.errors.max, trace=trace,
+                          scale.y=scale.y, ...)
     } else{
         parms <- qrnn2.fit(x=xs, y=ys, n.hidden=n.hidden, n.hidden2=n.hidden2,
                            w=w, tau=taus, n.ensemble=1, iter.max=iter.max,
@@ -54,7 +57,7 @@ mcqrnn.fit <- function(x, y, n.hidden=2, n.hidden2=NULL, w=NULL,
                            eps.seq=eps.seq, Th=Th, Th.prime=Th.prime,
                            penalty=penalty, unpenalized=1,
                            n.errors.max=n.errors.max, trace=trace, 
-                           method=method, ...)
+                           method=method, scale.y=scale.y, ...)
     }
     parms
 }

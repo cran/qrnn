@@ -69,7 +69,7 @@ function(x, y, n.hidden, w=NULL, tau=0.5, n.ensemble=1, iter.max=5000,
          n.trials=5, bag=FALSE, lower=-Inf, init.range=c(-0.5, 0.5, -0.5, 0.5),
          monotone=NULL, additive=FALSE, eps.seq=2^seq(-8, -32, by=-4),
          Th=sigmoid, Th.prime=sigmoid.prime, penalty=0, unpenalized=NULL,
-         n.errors.max=10, trace=TRUE, ...)
+         n.errors.max=10, trace=TRUE, scale.y=TRUE, ...)
 
 {
     if (!is.matrix(x)) stop("\"x\" must be a matrix")
@@ -88,14 +88,25 @@ function(x, y, n.hidden, w=NULL, tau=0.5, n.ensemble=1, iter.max=5000,
     x <- scale(x)
     x.center <- attr(x, "scaled:center")
     x.scale <- attr(x, "scaled:scale")
-    y <- scale(y)
+    if(scale.y){
+        y <- scale(y)
+    } else{
+        attr(y, "scaled:center") <- 0
+        attr(y, "scaled:scale") <- 1
+    }
     y.center <- attr(y, "scaled:center")
     y.scale <- attr(y, "scaled:scale")
     lower.scaled <- (lower-y.center)/y.scale
     if(additive)
         additive <- gam.mask(x, n.hidden)
     weights <- vector("list", n.ensemble)
-    if(trace) cat("tau =", unique(tau), "\n", sep=" ")
+    if(trace){
+        if(length(unique(tau)) <= 100){
+            cat("tau =", unique(tau), "\n", sep=" ")
+        } else{
+            cat("tau = [", range(tau), "]; n.tau =", length(tau), "\n", sep=" ") 
+        }
+    }
     for (i in seq(n.ensemble)){
         if(trace) cat(i, "/", n.ensemble, "\n", sep="")
         w.tmp <- NA

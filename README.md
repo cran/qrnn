@@ -3,6 +3,10 @@
 The [qrnn](https://cran.r-project.org/package=qrnn) package for R implements
 the quantile regression neural network (QRNN) (Taylor, 2000; Cannon, 2011;
 Cannon, 2018), which is a flexible nonlinear form of quantile regression.
+While low level modelling functions are available, it is recommended that the
+`mcqrnn.fit` and `mcqrnn.predict` wrappers be used for most applications. More
+information is provided below.
+
 The goal of quantile regression is to estimate conditional quantiles of a
 response variable that depend on covariates in some form of regression
 equation. The QRNN adopts the multi-layer perceptron neural network
@@ -35,7 +39,9 @@ level `composite.stack` and fitting functions.
 
 QRNN models with a single layer of hidden nodes can be fitted using the
 `qrnn.fit` function. Predictions from a fitted model are made using
-the `qrnn.predict` function. Note: a single hidden layer is usually sufficient
+the `qrnn.predict` function. The function `gam.style` can be used to visualize
+and investigate fitted covariate/response relationships from `qrnn.fit`
+(Plate et al., 2000). Note: a single hidden layer is usually sufficient
 for most modelling tasks. With added monotonicity constraints, a second hidden
 layer may sometimes be beneficial (Lang, 2005; Minin et al., 2010). QRNN models
 with two hidden layers are available using the `qrnn2.fit` and `qrnn2.predict`
@@ -53,20 +59,23 @@ of iterations `iter.max` can all influence fitting speed (and accuracy), as can
 changing the optimization algorithm via `method`. Non-crossing quantiles are 
 implemented by stacking multiple copies of the `x` and `y` data, one copy per
 value of `tau`. Depending on the dataset size, this can lead to large matrices
-being passed to the optimization routine. In the Adam `adam` stochastic gradient
-descent method, the `minibatch` size can be adjusted to help offset this cost.
-Model complexity is determined via the number of hidden nodes, `n.hidden` and
-`n.hidden2`, as well as the optional weight penalty `penalty`; values of these
-hyperparameters are crucial to obtaining a well performing model.
+being passed to the optimization routine. In the `adam` adaptive stochastic
+gradient descent method, the `minibatch` size can be adjusted to help offset
+this cost. Model complexity is determined via the number of hidden nodes, 
+`n.hidden` and `n.hidden2`, as well as the optional weight penalty `penalty`;
+values of these hyperparameters are crucial to obtaining a well performing
+model.
 
-For `mcqrnn.fit`, it is also possible to estimate the full quantile regression
-process by specifying a single integer value for `tau`. In this case, `tau`
-is the number of random samples used in the stochastic estimation, which is
-performed via the `adam` optimizer. For more information, see Tagasovska and
-Lopez-Paz (2019). It may be necessary to restart the optimization multiple times
-from the previous weights and biases, in which case `init.range` can be set to
-the `weights` values from the previously completed optimization run.
- 
+When using `mcqrnn.fit`, it is also possible to estimate the full quantile
+regression process by specifying a single integer value for `tau`. In this
+case, `tau` is the number of random samples used in the stochastic estimation.
+For more information, see Tagasovska and Lopez-Paz (2019). It may be necessary
+to restart the optimization multiple times from the previous weights and biases,
+in which case `init.range` can be set to the `weights` values from the
+previously completed optimization run. For large datasets, it is recommended
+that the `adam` method with an integer `tau` and an appropriate `minibatch`
+size be used for optimization.
+
 If models for multiple quantiles have been fitted, for example by
 `mcqrnn.fit` or multiple calls to either `qrnn.fit` or `qrnn2.fit`, the
 (experimental) `dquantile` function and its companion functions are available to
@@ -77,8 +86,29 @@ quantile, and random variate functions based on the Nadaraya-Watson estimator
 be useful for assessing probabilistic calibration and evaluating model
 performance.
 
-Finally, the function `gam.style` can be used to visualize and investigate
-fitted covariate/response relationships from `qrnn.fit` (Plate et al., 2000).
+Note: the user cannot easily change the output layer transfer function
+to be different than `hramp`, which provides either the identity function or a
+ramp function to accommodate optional left censoring. Some applications, for
+example fitting smoothed binary quantile regression models for a binary target
+variable (Kordas, 2006), require an alternative like the logistic sigmoid.
+While not straightforward, it is possible to change the output layer transfer
+function by switching off `scale.y` in the call to the fitting
+function and reassigning `hramp` and `hramp.prime` as follows:
+
+```
+library(qrnn)
+
+# Use the logistic sigmoid as the output layer transfer function
+To.logistic <- function(x, lower, eps) 0.5 + 0.5*tanh(x/2)
+environment(To.logistic) <- asNamespace("qrnn")
+assignInNamespace("hramp", To.logistic, ns="qrnn")
+
+# Change the derivative of the output layer transfer function
+To.logistic.prime <- function(x, lower, eps) 0.25/(cosh(x/2)^2)
+environment(To.logistic.prime) <- asNamespace("qrnn")
+assignInNamespace("hramp.prime", To.logistic.prime, ns="qrnn")
+
+```
 
 ### References
 
@@ -101,6 +131,9 @@ Review, 135: 2365-2378.
 Jiang, X., J. Jiang, and X. Song, 2012. Oracle model selection for nonlinear
 models based on weighted composite quantile regression. Statistica Sinica,
 22(4): 1479-1506.
+
+Kordas, G., 2006. Smoothed binary regression quantiles. Journal of Applied
+Econometrics, 21(3): 387-407.
 
 Lang, B., 2005. Monotonic multi-layer perceptron networks as universal
 approximators. International Conference on Artificial Neural Networks,
@@ -127,7 +160,7 @@ Tagasovska, N., D. Lopez-Paz, 2019. Single-model uncertainties for deep
 learning. Advances in Neural Information Processing Systems, 32,
 NeurIPS 2019. doi:10.48550/arXiv.1811.00908
 
-Taylor, J.W., 2000.  A quantile regression neural network approach to
+Taylor, J.W., 2000. A quantile regression neural network approach to
 estimating the conditional density of multiperiod returns. Journal of
 Forecasting, 19(4): 299-311.
 

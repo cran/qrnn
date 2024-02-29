@@ -45,7 +45,8 @@ qrnn.cost(weights, x, y, n.hidden, w, tau, lower, monotone,
       epsilon value used in the approximation functions.
   }
   \item{Th}{
-      hidden layer transfer function; use \code{\link{sigmoid}},  \code{\link{elu}}, \code{\link{softplus}} for a nonlinear model and \code{\link{linear}} for a linear model.
+      hidden layer transfer function; use \code{\link{sigmoid}}, \code{\link{elu}}, \code{\link{relu}}, \code{\link{lrelu}}, 
+      \code{\link{softplus}}, or other non-decreasing function for a nonlinear model and \code{\link{linear}} for a linear model.
   }
   \item{Th.prime}{
       derivative of the hidden layer transfer function \code{Th}.

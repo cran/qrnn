@@ -17,7 +17,7 @@ qquantile.nw <- function(p, tau, quant, h=0.001){
     q
 }
 
-pquantile.nw <- function(q, tau, quant, h=0.001, eps=.Machine$double.eps, ...){
+pquantile.nw <- function(q, tau, quant, h=0.001, ...){
 # Cumulative distribution function based on [tau, quant] pairs
     func <- function(p, q, tau, quant, h){
         qq <- qquantile.nw(p, tau=tau, quant=quant, h=h)
